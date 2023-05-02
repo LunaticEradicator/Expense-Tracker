@@ -13,6 +13,7 @@ export default function BookCreate(props) {
         event.preventDefault()
         storeBook()
         setEachBookName('') // erase eachBookName after submit
+
     }
 
     const handleInput = (event) => { // to get userInput 
