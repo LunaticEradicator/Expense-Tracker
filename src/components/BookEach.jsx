@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import BookEdit from "./BookEdit"
+import BookContext from "../context/Books"
 
 export default function BookEach(props) {
+    const { removeBookById } = useContext(BookContext)
     const [toggleEdit, setToggleEdit] = useState(false)
 
     function toggleEditFnc() {
         setToggleEdit(prevToggleEdit => !prevToggleEdit)
     }
+
     console.log(toggleEdit)
     return (
         props.title !== '' &&   // only create if user have entered a value
@@ -17,14 +20,13 @@ export default function BookEach(props) {
                     <>
                         <h1>{props.title}</h1>
                         <div className="bookEach-button">
-                            <button className="deleteBtn" onClick={() => props.handleRemoveBookById(props.id)}>Delete</button  >     {/* remove items */}
+                            <button className="deleteBtn" onClick={() => removeBookById(props.id)}>Delete</button  >     {/* remove items */}
                             <button onClick={toggleEditFnc} className="editBtn" > Edit</button>
                         </div>
                     </>
                     : // display edit section
-                    <BookEdit handleEditBook={props.handleEditBookByID} toggleEditFnc={toggleEditFnc} {...props} />
+                    <BookEdit toggleEditFnc={toggleEditFnc} {...props} />
             }
         </div>
-
     )
 }

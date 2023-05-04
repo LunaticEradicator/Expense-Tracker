@@ -1,15 +1,14 @@
 import BookEach from "./BookEach"
+import { useContext } from "react"
+import BookContext from "../context/Books"
 
-export default function BookList(props) {
+export default function BookList() {
     // console.log(props.booksToMap)
-
-    const renderedBooks = props.books.map(book => { // map each books 
+    const { books } = useContext(BookContext)
+    const renderedBooks = books.map(book => { // map each books 
         return < BookEach
             key={book.id}
             {...book}
-            handleRemoveBookById={props.handleRemoveBookById}
-            handleEditBookByID={props.handleEditBookByID}
-        // handleToggle={props.handleToggle}
         />
     })
 

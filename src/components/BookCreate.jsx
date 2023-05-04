@@ -1,14 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import BookContext from "../context/Books"
 
 
 export default function BookCreate(props) {
     const [newBookName, setNewBookName] = useState('') // to have an controlled input
+    const { createBook } = useContext(BookContext)
 
     console.log(newBookName)
 
     const handleSubmit = (event) => { // to submit new book
         event.preventDefault()
-        props.handleCreate(newBookName) // createBook Fnc 
+        createBook(newBookName) // createBook Fnc ------------------
         setNewBookName('') // erase eachBookName after submit
     }
 
