@@ -7,8 +7,9 @@ export default function BookList(props) {
         return < BookEach
             key={book.id}
             {...book}
-            handleRemoveBook={props.removeBook}
-            handleEditBook={props.editBook}
+            handleRemoveBookById={props.handleRemoveBookById}
+            handleEditBookByID={props.handleEditBookByID}
+        // handleToggle={props.handleToggle}
         />
     })
 

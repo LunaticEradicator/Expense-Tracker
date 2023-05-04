@@ -7,22 +7,24 @@ export default function BookEach(props) {
     function toggleEditFnc() {
         setToggleEdit(prevToggleEdit => !prevToggleEdit)
     }
-
-
+    console.log(toggleEdit)
     return (
+        props.title !== '' &&   // only create if user have entered a value
         <div className="bookEach">
-            <h1>{props.title}</h1>
             <img src={`https://picsum.photos/seed/${props.id}/200/300`} alt="Random Image" />
-            <button className="deleteBtn" onClick={() => props.handleRemoveBook(props.id)}>Delete</button  >     {/* remove items */}
-            <button onClick={toggleEditFnc} className="editBtn" > Edit</button>
-            {toggleEdit === true &&
-                <BookEdit
-                    handleEditBook={props.handleEditBook}
-                    handleEditToggle={() => toggleEditFnc()}
-                    // id={props.id} // no need to call each props just use spread operator 
-                    {...props}
-                />
+            {
+                toggleEdit === false ? // display title and buttons
+                    <>
+                        <h1>{props.title}</h1>
+                        <div className="bookEach-button">
+                            <button className="deleteBtn" onClick={() => props.handleRemoveBookById(props.id)}>Delete</button  >     {/* remove items */}
+                            <button onClick={toggleEditFnc} className="editBtn" > Edit</button>
+                        </div>
+                    </>
+                    : // display edit section
+                    <BookEdit handleEditBook={props.handleEditBookByID} toggleEditFnc={toggleEditFnc} {...props} />
             }
         </div>
+
     )
 }

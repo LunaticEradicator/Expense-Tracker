@@ -1,32 +1,30 @@
-import { nanoid } from "nanoid"
 import { useState } from "react"
 
+
 export default function BookCreate(props) {
-    const [eachBookName, setEachBookName] = useState('') // to have an controlled input
+    const [newBookName, setNewBookName] = useState('') // to have an controlled input
 
-    const storeBook = () => {
-        // props.setBooks(eachBookName) // add each book to bookList
-        props.newBooks([...props.oldBooks, { id: nanoid(), title: eachBookName }]) // used an array since state will be overwritten when adding element 
-    }
+    console.log(newBookName)
 
-    const handleSubmit = (event) => { // to submit 
+    const handleSubmit = (event) => { // to submit new book
         event.preventDefault()
-        storeBook()
-        setEachBookName('') // erase eachBookName after submit
-
+        props.handleCreate(newBookName) // createBook Fnc 
+        setNewBookName('') // erase eachBookName after submit
     }
 
-    const handleInput = (event) => { // to get userInput 
-        setEachBookName(event.target.value)
+    const handleInput = (event) => { // to get userInput of the books title
+        setNewBookName(event.target.value)
     }
 
     return (
         <div className="bookCreate">
-            <h2>Create Book</h2>
-            <form onSubmit={handleSubmit} action="">
-                <input value={eachBookName} onChange={handleInput} type="text" name="bookName" />
-                <button>Create Book</button>
-            </form>
+            <div className="createForm">
+                <form onSubmit={handleSubmit} action="">
+                    <input value={newBookName} onChange={handleInput} type="text" name="bookName" className="createForm-bookName" required />
+                    <button className="createForm-button">Create Book</button>
+                </form>
+            </div>
+
         </div>
     )
 }
