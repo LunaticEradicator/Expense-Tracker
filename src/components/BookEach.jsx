@@ -1,9 +1,9 @@
-import { useState, useContext } from "react"
+import { useState } from "react"
 import BookEdit from "./BookEdit"
-import BookContext from "../context/Books"
+import useCustomBookContext from "../hooks/use-custom-book-context"
 
 export default function BookEach(props) {
-    const { removeBookById } = useContext(BookContext)
+    const { removeBookById } = useCustomBookContext()
     const [toggleEdit, setToggleEdit] = useState(false)
 
     function toggleEditFnc() {

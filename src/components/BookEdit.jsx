@@ -1,8 +1,8 @@
-import { useState, useContext } from "react";
-import BookContext from "../context/Books";
+import { useState } from "react";
+import useCustomBookContext from "../hooks/use-custom-book-context";
 
 export default function BookEdit(props) {
-    const { editBookById } = useContext(BookContext)
+    const { editBookById } = useCustomBookContext();
     const [editBook, setEditBook] = useState(props.title)
     // console.log(editBook)
 

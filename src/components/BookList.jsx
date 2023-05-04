@@ -1,10 +1,9 @@
 import BookEach from "./BookEach"
-import { useContext } from "react"
-import BookContext from "../context/Books"
+import useCustomBookContext from "../hooks/use-custom-book-context"
 
 export default function BookList() {
     // console.log(props.booksToMap)
-    const { books } = useContext(BookContext)
+    const { books } = useCustomBookContext()
     const renderedBooks = books.map(book => { // map each books 
         return < BookEach
             key={book.id}

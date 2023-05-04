@@ -1,10 +1,10 @@
-import { useState, useContext } from "react"
-import BookContext from "../context/Books"
+import { useState } from "react"
+import useCustomBookContext from "../hooks/use-custom-book-context"
 
 
-export default function BookCreate(props) {
+export default function BookCreate() {
     const [newBookName, setNewBookName] = useState('') // to have an controlled input
-    const { createBook } = useContext(BookContext)
+    const { createBook } = useCustomBookContext()
 
     console.log(newBookName)
 
