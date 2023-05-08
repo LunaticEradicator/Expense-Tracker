@@ -1,28 +1,18 @@
 {
   "books": [
     {
-      "title": "Sike",
-      "amount": "12",
-      "date": "2023-05-18",
+      "title": "asds",
+      "date": "2023-05-12",
+      "expense": 0,
+      "income": "10000",
       "id": 1
     },
     {
       "title": "asds",
-      "amount": "32",
-      "date": "2023-05-10",
+      "date": "2023-05-18",
+      "expense": "3232",
+      "income": 0,
       "id": 2
-    },
-    {
-      "title": "sad",
-      "amount": "3",
-      "date": "2023-05-11",
-      "id": 3
-    },
-    {
-      "title": "asds",
-      "amount": "23",
-      "date": "2023-05-04",
-      "id": 4
     }
   ]
 }

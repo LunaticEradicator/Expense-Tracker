@@ -12,11 +12,12 @@ function Provider({ children }) {
     }, [])
 
 
-    const createBook = async (itemTitle, itemAmount, itemDate) => { // to add new books [post]
+    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome) => { // to add new books [post] 
         const response = await axios.post("http://localhost:8000/books", {
             title: itemTitle,
-            amount: itemAmount,
-            date: itemDate
+            date: itemDate,
+            expense: itemExpense,
+            income: itemIncome
         })
         setBooks([...books, response.data]) // response.data is the data we are storing [see db.json]
         console.log(response)
@@ -31,11 +32,12 @@ function Provider({ children }) {
         }))
     }
 
-    const editBookById = async (id, editTitle, editDate, editAmount) => {
+    const editBookById = async (id, editTitle, editDate, editExpense, editIncome) => {
         const response = await axios.put(`http://localhost:8000/books/${id}`, {
             title: editTitle,
             date: editDate,
-            amount: editAmount
+            expense: editExpense,
+            income: editIncome,
         })
         setBooks(prevBooks => prevBooks.map(item => {
             // return item.id === id ? { ...item, title: newTitle } : item // instead of getting just one updated value [title]

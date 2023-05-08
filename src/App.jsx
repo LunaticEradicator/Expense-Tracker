@@ -2,9 +2,9 @@ import './main.css'
 import { useEffect } from 'react';
 import useCustomBookContext from "./hooks/use-custom-book-context"
 
-import AddItem from './components/AddItem';
-import ExpenseList from './components/ExpenseList';
-import ExpenseDetails from './components/ExpenseDetails';
+import ExpenseList from './components/RUD/ExpenseList';
+import AddItem from './components/Create/AddItem'
+import ExpenseDetails from './components/RUD/ExpenseDetails';
 
 export default function App() {
   // const { fetchApi } = useContext(BookContext)

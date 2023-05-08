@@ -1,7 +1,7 @@
 import { useState } from "react"
 import BookEdit from "./BookEdit"
-import useCustomBookContext from "../hooks/use-custom-book-context"
-import defaultImage from '../image/default.png'
+import useCustomBookContext from "../../hooks/use-custom-book-context"
+import defaultImage from '../../image/default.png'
 
 export default function BookEach(props) {
     const { removeBookById } = useCustomBookContext()
@@ -19,8 +19,12 @@ export default function BookEach(props) {
                 toggleEdit === false ?          // display title and buttons
                     <>
                         <h1>{props.title}</h1>
-                        <h1>{props.amount}</h1>
+
+                        {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>{props.expense}</h1>}
+                        {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>{props.income}</h1>}
+
                         <h1>{props.date}</h1>
+
                         <div className="bookEach-button">
                             <button className="deleteBtn" onClick={() => removeBookById(props.id)}>Delete</button  >     {/* remove items */}
                             <button onClick={toggleEditFnc} className="editBtn" > Edit</button>
