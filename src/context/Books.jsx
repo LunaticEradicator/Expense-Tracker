@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useCallback } from "react";
 import axios from "axios";
 
 const BookContext = createContext();
@@ -6,15 +6,17 @@ const BookContext = createContext();
 function Provider({ children }) {
     const [books, setBooks] = useState([])
 
-    const fetchApi = async () => {
+    const fetchApi = useCallback(async () => {
         const response = await axios.get("http://localhost:8000/books")
         setBooks(response.data)
-    }
+    }, [])
 
 
-    const createBook = async (newBookName) => { // to add new books [post]
+    const createBook = async (itemTitle, itemAmount, itemDate) => { // to add new books [post]
         const response = await axios.post("http://localhost:8000/books", {
-            title: newBookName
+            title: itemTitle,
+            amount: itemAmount,
+            date: itemDate
         })
         setBooks([...books, response.data]) // response.data is the data we are storing [see db.json]
         console.log(response)
@@ -29,9 +31,11 @@ function Provider({ children }) {
         }))
     }
 
-    const editBookById = async (id, newTitle) => {
+    const editBookById = async (id, editTitle, editDate, editAmount) => {
         const response = await axios.put(`http://localhost:8000/books/${id}`, {
-            title: newTitle
+            title: editTitle,
+            date: editDate,
+            amount: editAmount
         })
         setBooks(prevBooks => prevBooks.map(item => {
             // return item.id === id ? { ...item, title: newTitle } : item // instead of getting just one updated value [title]
