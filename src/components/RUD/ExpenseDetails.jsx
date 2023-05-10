@@ -1,16 +1,16 @@
 import useCustomBookContext from "../../hooks/use-custom-book-context";
 
-
 export default function ExpenseDetails() {
-    const { books } = useCustomBookContext()
+    const { books } = useCustomBookContext();
+
 
     const totalIncome = books.reduce((acc, book) => {
-        console.log(book)
+        // console.log(book)
         return acc + parseInt(book.income)
     }, 0)
 
     const totalExpense = books.reduce((acc, book) => {
-        console.log(book)
+        // console.log(book)
         return acc + parseInt(book.expense)
     }, 0)
 

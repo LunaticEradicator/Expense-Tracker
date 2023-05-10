@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import useCustomBookContext from "./hooks/use-custom-book-context"
 
 import ExpenseList from './components/RUD/ExpenseList';
-import AddItem from './components/Create/AddItem'
 import ExpenseDetails from './components/RUD/ExpenseDetails';
+import AddExpenseAndIncome from './components/Create/AddExpenseAndIncome'
 
 export default function App() {
   // const { fetchApi } = useContext(BookContext)
@@ -18,7 +18,7 @@ export default function App() {
     <div className='app'>
       <ExpenseDetails />
       <ExpenseList />
-      <AddItem />
+      <AddExpenseAndIncome />
     </div>
   )
 }
