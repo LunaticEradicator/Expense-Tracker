@@ -6,30 +6,29 @@ const BookContext = createContext();
 function Provider({ children }) {
     const [books, setBooks] = useState([])
 
-    const fetchApi = useCallback(async () => {
+    books.sort((a, b) => {                      // sort books by date
+        a = parseInt(a.date.split('-').join(''));
+        b = parseInt(b.date.split('-').join(''));
+        return b - a
+    })
+
+
+    const fetchApi = useCallback(async () => { // to add new books [post] 
         const response = await axios.get("http://localhost:8000/books")
         setBooks(response.data)
     }, [])
 
 
-    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome) => { // to add new books [post] 
+    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome) => {  // to create book [post]
         const response = await axios.post("http://localhost:8000/books", {
             title: itemTitle,
             date: itemDate,
             expense: itemExpense,
             income: itemIncome
         })
-        setBooks([...books, response.data]) // response.data is the data we are storing [see db.json]
+        setBooks([response.data, ...books]) // response.data is the data we are storing [see db.json]
         console.log(response)
-    }
-
-
-    const removeBookById = async (id) => {
-        await axios.delete(`http://localhost:8000/books/${id}`)
-
-        setBooks(prevBooks => prevBooks.filter(item => {
-            return item.id !== id
-        }))
+        // console.log(response.date)
     }
 
     const editBookById = async (id, editTitle, editDate, editExpense, editIncome) => {
@@ -44,6 +43,16 @@ function Provider({ children }) {
             return item.id === id ? { ...item, ...response.data } : item // return every new value [response.data] // better for large scale productions
         }))
     }
+
+
+    const removeBookById = async (id) => {
+        await axios.delete(`http://localhost:8000/books/${id}`)
+
+        setBooks(prevBooks => prevBooks.filter(item => {
+            return item.id !== id
+        }))
+    }
+
 
     const valueToBeUsed = {
         books,

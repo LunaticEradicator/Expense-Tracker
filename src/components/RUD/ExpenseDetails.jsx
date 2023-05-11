@@ -5,12 +5,10 @@ export default function ExpenseDetails() {
 
 
     const totalIncome = books.reduce((acc, book) => {
-        // console.log(book)
         return acc + parseInt(book.income)
     }, 0)
 
     const totalExpense = books.reduce((acc, book) => {
-        // console.log(book)
         return acc + parseInt(book.expense)
     }, 0)
 
@@ -20,8 +18,7 @@ export default function ExpenseDetails() {
 
     return (
         <div className="expenseDetails-div">
-            <h1 className="expenseDetails-heading">ExpenseDetails</h1>
-
+            {/* <h1 className="expenseDetails-heading">ExpenseDetails</h1> */}
             <div className="expenseDetails-total">
                 <h2>Balance: {totalCost} </h2>
             </div>

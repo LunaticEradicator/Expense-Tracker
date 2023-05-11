@@ -3,7 +3,7 @@ import ExpenseEdit from "../ExpenseEdit"
 import useCustomBookContext from "../../../../hooks/use-custom-book-context"
 import defaultImage from '../../../../image/default.png'
 
-export default function DuplicateItem(props) {
+export default function ExpenseEachRepeating(props) {
     const { removeBookById } = useCustomBookContext()
     const [toggleEdit, setToggleEdit] = useState(false)
 

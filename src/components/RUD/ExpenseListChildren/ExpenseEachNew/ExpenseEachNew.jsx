@@ -14,13 +14,13 @@ export default function BookEach(props) {
     return (
         // if duplicateDate[props.duplicate] does not contains the new books date then it is not a duplicate
         props.title !== '' && !props.repeatingDate.includes(props.date) &&  // only create if user have entered a value && if there are no duplicates available
-        <div className="bookEach">
+        <div className="expenseEachNew">
             {
                 // ---------------------------------------
                 toggleEdit === false ?          // display title and buttons
                     <div>
                         <div className="bookEach-header">
-                            <h1>{props.date}</h1>
+                            <h1>{props.date.split('-').reverse().join('-')}</h1> {/* reverse to dd-mm-yy format */}
                             {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>-{props.expense}</h1>}
                             {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>+{props.income}</h1>}
                         </div>

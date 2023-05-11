@@ -38,7 +38,7 @@ export default function AddExpense() {
                 </>
                 :
                 <div className="addItem-button-div">
-                    <button className="addItem-button" onClick={handleIsCreate}>+</button>
+                    <button className="addItem-button" onClick={handleIsCreate}>Add</button>
                 </div>
             }
         </div>

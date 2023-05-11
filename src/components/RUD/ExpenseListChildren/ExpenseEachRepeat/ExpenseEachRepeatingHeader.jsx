@@ -1,11 +1,11 @@
 import useCustomBookContext from "../../../../hooks/use-custom-book-context"
-import DuplicateItem from './DuplicateItem'
+import ExpenseEachRepeating from './ExpenseEachRepeating'
 
 export default function ItemDateHeading(props) {
     const { books } = useCustomBookContext();
 
     const renderedBookListDuplicate = books.map(book => { // map each books 
-        return < DuplicateItem
+        return < ExpenseEachRepeating
             key={book.id}
             repeatingDate={props.repeatingDate}
             date={props.date}
@@ -13,10 +13,9 @@ export default function ItemDateHeading(props) {
         />
     })
 
-    const styles = { border: '1px solid red', borderRadius: '10px', padding: '10px' }
     return (
-        <div style={styles} >
-            <h1 >{props.repeatingDate}</h1>
+        <div className="expenseEachRepeatingHeader"  >
+            <h1 >{props.repeatingDate.split('-').reverse().join('-')}</h1>{/* reverse to dd-mm-yy format */}
             {renderedBookListDuplicate}
         </div>
     )
