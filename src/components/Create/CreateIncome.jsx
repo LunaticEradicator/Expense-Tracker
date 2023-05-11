@@ -9,16 +9,18 @@ export default function IncomeCreate(props) {
     const [item, setItem] = useState({
         title: '',
         date: '',
-        income: ''
+        income: '',
+        categories: ''
+
     }) // to have an controlled input
 
 
     const handleSubmit = (event) => { // to submit new book
         event.preventDefault()
         // createBook Fnc//
-        createBook(item.title, item.date, 0, item.income)  //0 === income [add sum without showing Nan]
+        createBook(item.title, item.date, 0, item.income, item.categories)  //0 === income [add sum without showing Nan]
         setItem(prevItem => {
-            return { title: '', date: '', income: '' }
+            return { title: '', date: '', income: '', categories: '' }
         }) // erase eachBookName after submit
         props.setIsCreate(false)
     }
@@ -45,6 +47,18 @@ export default function IncomeCreate(props) {
                         <div className="createForm-expense-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
+                        <select onChange={handleInput} name="categories" required>
+                            <option disabled selected value={''} >Categories</option>
+                            <option value="salary">Salary</option>
+                            <option value="awards">Awards</option>
+                            <option value="grants">Grants</option>
+                            <option value="coupon">Coupon</option>
+                            <option value="lottery">Lottery</option>
+                            <option value="refund">Refund</option>
+                            <option value="rental">Rental</option>
+                            <option value="investment">Investment</option>
+                            <option value="others">Others</option>
+                        </select>
                         <div className="createForm-div-button">
                             <button className="createForm-button">Submit</button>
                         </div>

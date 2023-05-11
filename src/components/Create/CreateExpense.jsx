@@ -9,17 +9,18 @@ export default function ExpenseCreate(props) {
     const [item, setItem] = useState({
         title: '',
         date: '',
-        expense: ''
+        expense: '',
+        categories: ''
     }) // to have an controlled input
 
 
     const handleSubmit = (event) => { // to submit new book
         event.preventDefault()
         //createBook Fnc
-        createBook(item.title, item.date, item.expense, 0) // 0 === income [add sum without showing Nan]
+        createBook(item.title, item.date, item.expense, 0, item.categories) // 0 === income [add sum without showing Nan]
         // erase eachBookName after submit
         setItem(prevItem => {
-            return { title: '', date: '', expense: '' }
+            return { title: '', date: '', expense: '', categories: '' }
         })
         // toggle off Create Children []
         props.setIsCreate(false)
@@ -36,7 +37,7 @@ export default function ExpenseCreate(props) {
             {props.isExpense &&
 
                 <div className="createForm-div">
-                    <form onSubmit={handleSubmit} className="createForm">
+                    <form onSubmit={handleSubmit} className="createForm" required>
                         <div className="createForm-title-div">
                             <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" required />
                         </div>
@@ -46,6 +47,18 @@ export default function ExpenseCreate(props) {
                         <div className="createForm-expense-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
+                        <select onChange={handleInput} name="categories" required >
+                            <option value={''} disabled selected>Categories</option>
+                            <option value="food">Food</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="bills">Bills</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="home">Home</option>
+                            <option value="cars">Cars</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="insurance">Insurance</option>
+                            <option value="pet">Pet</option>
+                        </select>
                         <div className="createForm-div-button">
                             <button className="createForm-button">Submit</button>
                         </div>

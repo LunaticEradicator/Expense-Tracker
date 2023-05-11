@@ -20,7 +20,7 @@ export default function ExpenseEachRepeating(props) {
                 // ---------------------------------------
                 toggleEdit === false ?          // display title and buttons
                     <div>
-                        {/* {props.date !== props.duplicate && <h1>{props.date}</h1>} */}
+                        <h1>{props.categories}</h1>
                         <div className="duplicateItem-header">
                             {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>-{props.expense}</h1>}
                             {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>+{props.income}</h1>}
@@ -38,6 +38,6 @@ export default function ExpenseEachRepeating(props) {
                     <ExpenseEdit toggleEditFnc={toggleEditFnc} {...props} />
                 // ---------------------------------------
             }
-        </div>
+        </div >
     )
 }

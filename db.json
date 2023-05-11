@@ -1,53 +1,20 @@
 {
   "books": [
     {
-      "title": "asdds",
-      "date": "2023-05-04",
-      "expense": "323",
+      "title": "Messi",
+      "date": "2023-05-11",
+      "expense": "10",
       "income": 0,
+      "categories": "entertainment",
       "id": 1
     },
     {
       "title": "asds",
-      "date": "2020-03-12",
-      "expense": "323",
-      "income": 0,
-      "id": 2
-    },
-    {
-      "title": "ads",
       "date": "2023-05-11",
       "expense": "32",
       "income": 0,
-      "id": 3
-    },
-    {
-      "title": "New",
-      "date": "2023-05-11",
-      "expense": "323",
-      "income": 0,
-      "id": 4
-    },
-    {
-      "title": "yolo",
-      "date": "2023-05-11",
-      "expense": 0,
-      "income": "32",
-      "id": 5
-    },
-    {
-      "title": "asd",
-      "date": "2015-02-21",
-      "expense": "323",
-      "income": 0,
-      "id": 6
-    },
-    {
-      "title": "sads",
-      "date": "2023-05-10",
-      "expense": "232",
-      "income": 0,
-      "id": 7
+      "categories": "food",
+      "id": 2
     }
   ]
 }

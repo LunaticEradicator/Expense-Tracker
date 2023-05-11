@@ -5,6 +5,7 @@ const BookContext = createContext();
 
 function Provider({ children }) {
     const [books, setBooks] = useState([])
+    console.log(books)
 
     books.sort((a, b) => {                      // sort books by date
         a = parseInt(a.date.split('-').join(''));
@@ -19,24 +20,26 @@ function Provider({ children }) {
     }, [])
 
 
-    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome) => {  // to create book [post]
+    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome, itemCategories) => {  // to create book [post]
         const response = await axios.post("http://localhost:8000/books", {
             title: itemTitle,
             date: itemDate,
             expense: itemExpense,
-            income: itemIncome
+            income: itemIncome,
+            categories: itemCategories
         })
         setBooks([response.data, ...books]) // response.data is the data we are storing [see db.json]
         console.log(response)
         // console.log(response.date)
     }
 
-    const editBookById = async (id, editTitle, editDate, editExpense, editIncome) => {
+    const editBookById = async (id, editTitle, editDate, editExpense, editIncome, editCategories) => {
         const response = await axios.put(`http://localhost:8000/books/${id}`, {
             title: editTitle,
             date: editDate,
             expense: editExpense,
             income: editIncome,
+            categories: editCategories
         })
         setBooks(prevBooks => prevBooks.map(item => {
             // return item.id === id ? { ...item, title: newTitle } : item // instead of getting just one updated value [title]

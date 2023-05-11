@@ -21,6 +21,7 @@ export default function BookEach(props) {
                     <div>
                         <div className="bookEach-header">
                             <h1>{props.date.split('-').reverse().join('-')}</h1> {/* reverse to dd-mm-yy format */}
+                            <h1>{props.categories}</h1> {/* reverse to dd-mm-yy format */}
                             {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>-{props.expense}</h1>}
                             {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>+{props.income}</h1>}
                         </div>
