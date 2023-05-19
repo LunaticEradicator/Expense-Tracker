@@ -36,7 +36,7 @@ export default function BookEdit(props) {
                     <input onChange={handleInput} className="bookEdit-date" name="editDate" type="date" defaultValue={editBook.editDate} max={currentDate} />
                     {editBook.editExpense === 0 // by default we set expense and income to 0 if they are not selected
                         ?
-                        // display income and disable expense if editExpense === [0] 
+                        // Display income and disable expense if editExpense === [0] 
                         <>
                             <input onChange={handleInput} className="bookEdit-amount" name="editIncome" type="number" defaultValue={editBook.editIncome} />
                             <select onChange={handleInput} name="editCategories" defaultValue={editBook.editCategories} required>
@@ -53,7 +53,7 @@ export default function BookEdit(props) {
                             </select>
                         </>
                         :
-                        // display expense and disable income if editExpense !== [0] 
+                        // Display expense and disable income if editExpense !== [0] 
                         <>
                             <input onChange={handleInput} className="bookEdit-amount" name="editExpense" type="number" defaultValue={editBook.editExpense} />
                             <select onChange={handleInput} name="editCategories" required defaultValue={editBook.editCategories}  >

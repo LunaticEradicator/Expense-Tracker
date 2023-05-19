@@ -53,13 +53,32 @@ input[type=number] {
     padding: 10px
 }
 
-.duplicateItem {
-    align-items: center;
+.repeatingValue {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.expenseEachRepeating {
     margin: 10px;
-    /* border: 1px solid red; */
     border-radius: 10px;
     padding: 10px;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* flex-wrap: wrap; */
+}
+
+.expenseEachRepeating-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.expenseEachRepeating-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .bookEach-header {
@@ -71,19 +90,33 @@ input[type=number] {
 .bookEach-button {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-/* {
+/* .bookEach-button {
+    margin: 5px;
+} */
+
+.bookEach-button>button {
+    margin: 2px;
+}
+
+.bookEach-content-details {
     display: flex;
     align-items: center;
-    justify-content: center;
-} */
+    gap: 10px;
+}
+
+.bookEach-content-details {
+    display: flex;
+    gap: 10px;
+}
 
 
 .deleteBtn,
 .editBtn {
-    margin: 10px;
+    /* margin: 10px; */
     font-size: 1.2rem;
     border-radius: 5px;
     border: 1px solid black;

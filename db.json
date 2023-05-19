@@ -2,19 +2,83 @@
   "books": [
     {
       "title": "Messi",
-      "date": "2023-05-11",
-      "expense": "10",
+      "date": "2023-05-12",
+      "expense": "100",
       "income": 0,
-      "categories": "entertainment",
+      "categories": "food",
       "id": 1
     },
     {
-      "title": "asds",
-      "date": "2023-05-11",
-      "expense": "32",
+      "title": "assd",
+      "date": "2023-05-12",
+      "expense": "20",
       "income": 0,
-      "categories": "food",
+      "categories": "clothing",
       "id": 2
+    },
+    {
+      "title": "assd",
+      "date": "2023-05-12",
+      "expense": "30",
+      "income": 0,
+      "categories": "clothing",
+      "id": 3
+    },
+    {
+      "title": "New",
+      "date": "2023-05-05",
+      "expense": "40",
+      "income": 0,
+      "categories": "clothing",
+      "id": 4
+    },
+    {
+      "title": "New Two",
+      "date": "2023-05-05",
+      "expense": "50",
+      "income": 0,
+      "categories": "clothing",
+      "id": 5
+    },
+    {
+      "title": "New Three",
+      "date": "2023-05-05",
+      "expense": "1000",
+      "income": 0,
+      "categories": "clothing",
+      "id": 6
+    },
+    {
+      "title": "Newy",
+      "date": "2023-05-18",
+      "expense": "2323",
+      "income": 0,
+      "categories": "bills",
+      "id": 10
+    },
+    {
+      "title": "Newy2",
+      "date": "2023-05-18",
+      "expense": "1000",
+      "income": 0,
+      "categories": "bills",
+      "id": 11
+    },
+    {
+      "title": "asdsd",
+      "date": "2023-05-18",
+      "expense": "323",
+      "income": 0,
+      "categories": "bills",
+      "id": 12
+    },
+    {
+      "title": "Sjk",
+      "date": "2023-05-04",
+      "expense": "2323",
+      "income": 0,
+      "categories": "transportation",
+      "id": 13
     }
   ]
 }

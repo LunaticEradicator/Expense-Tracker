@@ -1,6 +1,7 @@
 import ExpenseEachNew from './ExpenseListChildren/ExpenseEachNew/ExpenseEachNew'
 import useCustomBookContext from "../../hooks/use-custom-book-context"
 import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseEachRepeat/ExpenseEachRepeatingHeader'
+import DailyExpense from './ExpenseListChildren/ExpenseEachRepeat/DailyExpense'
 
 export default function BookList() {
     const { books } = useCustomBookContext()
@@ -12,56 +13,61 @@ export default function BookList() {
     const showRepeatingDate = allDate.filter((item, index) => allDate.indexOf(item) !== index) // ---------------- shows duplicateDate from allDate
     const repeatingDate = showRepeatingDate.filter((item, index) => showRepeatingDate.indexOf(item) === index) // remove duplicate from showRepeatingDate
 
-    // console.log(`--------------------allDate---------------------`)
-    // console.log(allDate)
-    // console.log(`--------------------duplicateDateValue---------------------`)
-    // console.log(findDuplicateDate);
-    // console.log(`--------------------RefinedDate---------------------`)
-    // console.log(filterDate);
+
+    const allExpense = books.map(item => {
+        return repeatingDate.includes(item.date) ? { date: item.date, expense: item.expense } : { date: item.date, expense: item.expense }
+    })
+
+    const showDailyExpense = allExpense.reduce((accumulator, cur) => {
+        cur.expense = parseInt(cur.expense)
+        let repDate = cur.date;
+        let found = accumulator.find(elem => elem.date === repDate)
+        if (found) {
+            found.expense += cur.expense;
+        }
+        else accumulator.push(cur);
+        return accumulator;
+    }, []);
 
 
+    console.log(showDailyExpense)
+    console.log(`-----Need Fix--------`)
+
+
+    // const renderDailyExpense = showDailyExpense.map((item, index) => {
+    //     return (
+    //         <DailyExpense
+    //             key={index}
+    //             repeatingDate={repeatingDate}
+    //             {...item}
+    //         />
+    //     )
+    // })
 
     const renderExpenseEachNew = books.map(book => { // map each books 
         return < ExpenseEachNew
             key={book.id}
             repeatingDate={repeatingDate}
+            showDailyExpense={showDailyExpense}
             {...book}
         />
     })
 
     const renderExpenseEachRepeatingHeader = repeatingDate.map((itemDate, index) => {
+        // console.log(itemDate)
         return <ExpenseEachRepeatingHeader
             key={index}
             repeatingDate={itemDate}
-            date={allDate}
+            showDailyExpense={showDailyExpense}
         />
     })
 
     return (
         < div className="bookList" >
-            {renderExpenseEachRepeatingHeader}
             {renderExpenseEachNew}
+            {renderExpenseEachRepeatingHeader}
+            {/* {renderDailyExpense} */}
         </div >
     )
 
 }
-// const lastAddedDate = duplicateDateValue.every(item => {
-//     return item
-// })
-
-// console.log(`-----------------lastAddedDate--------------------`)
-// console.log(lastAddedDate)
-
-    // // ------------------------ Check Duplicate Array {
-
-    // let containDuplicate = allDate.some((element, index) => {
-    //     return allDate.indexOf(element) !== index
-    // });
-    // if (containDuplicate) {
-    //     console.log('Duplicate elements exist');
-    //     // console.log(containDuplicate);
-    // }
-    // else {
-    //     console.log("Duplicates doesn't exist ");
-    // }
-    // // ------------------------ toFindDuplicates Array {
