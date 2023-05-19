@@ -22,7 +22,7 @@ export default function IncomeCreate(props) {
         setItem(prevItem => {
             return { title: '', date: '', income: '', categories: '' }
         }) // erase eachBookName after submit
-        props.setIsCreate(false)
+        props.setIsSubmit(false)
     }
 
     const handleInput = (event) => { // to get userInput of the books title

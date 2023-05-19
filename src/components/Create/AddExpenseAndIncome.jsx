@@ -3,12 +3,12 @@ import CreateExpense from "./CreateExpense";
 import CreateIncome from "./CreateIncome";
 
 export default function AddExpense() {
-    const [isCreate, setIsCreate] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
     const [isIncome, setIsIncome] = useState(false);
     const [isExpense, setIsExpense] = useState(false);
 
     function handleIsCreate() {
-        setIsCreate(prevIsCreate => !prevIsCreate)
+        setIsSubmit(prevIsCreate => !prevIsCreate) // togg
     }
 
     function handleIsIncome() {
@@ -23,15 +23,16 @@ export default function AddExpense() {
 
     return (
         <div className="addItem">
-            {isCreate
+            {isSubmit
                 ?
                 <>
                     <CreateIncome                               // Income Component
+                        setIsSubmit={setIsSubmit}
                         isIncome={isIncome}
                         handleIsIncome={handleIsIncome}
                     />
                     <CreateExpense                             // Expense Component
-                        setIsCreate={setIsCreate}
+                        setIsSubmit={setIsSubmit}
                         isExpense={isExpense}
                         handleIsExpense={handleIsExpense}
                     />

@@ -23,7 +23,7 @@ export default function ExpenseCreate(props) {
             return { title: '', date: '', expense: '', categories: '' }
         })
         // toggle off Create Children []
-        props.setIsCreate(false)
+        props.setIsSubmit(false)
     }
 
     const handleInput = (event) => { // to get userInput of the books title

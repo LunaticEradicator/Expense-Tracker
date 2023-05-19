@@ -79,6 +79,78 @@
       "income": 0,
       "categories": "transportation",
       "id": 13
+    },
+    {
+      "title": "asds",
+      "date": "2023-05-04",
+      "expense": "232",
+      "income": 0,
+      "categories": "cars",
+      "id": 14
+    },
+    {
+      "title": "asd",
+      "date": "2023-05-19",
+      "expense": "2323",
+      "income": 0,
+      "categories": "transportation",
+      "id": 15
+    },
+    {
+      "title": "asdasd",
+      "date": "2023-05-19",
+      "expense": 0,
+      "income": "232",
+      "categories": "lottery",
+      "id": 16
+    },
+    {
+      "title": "ASD",
+      "date": "2023-05-19",
+      "expense": 0,
+      "income": "1000",
+      "categories": "salary",
+      "id": 17
+    },
+    {
+      "title": "asd",
+      "date": "2023-05-18",
+      "expense": 0,
+      "income": "23",
+      "categories": "grants",
+      "id": 18
+    },
+    {
+      "title": "asds",
+      "date": "2023-05-03",
+      "expense": "232",
+      "income": 0,
+      "categories": "transportation",
+      "id": 19
+    },
+    {
+      "title": "assd",
+      "date": "2023-05-11",
+      "expense": 0,
+      "income": "232",
+      "categories": "lottery",
+      "id": 20
+    },
+    {
+      "title": "sdas",
+      "date": "2023-05-04",
+      "expense": 0,
+      "income": "23",
+      "categories": "refund",
+      "id": 21
+    },
+    {
+      "title": "sdsad",
+      "date": "2023-05-19",
+      "expense": 0,
+      "income": "2323",
+      "categories": "grants",
+      "id": 22
     }
   ]
 }

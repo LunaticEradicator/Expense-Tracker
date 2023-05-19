@@ -13,6 +13,12 @@ export default function ItemDateHeading(props) {
         )
     })
 
+    const renderDailyIncome = props.showDailyIncome.map(item => {
+        return (
+            props.repeatingDate === item.date && <h2 style={{ color: "green" }}>+{item.income}</h2>
+        )
+    })
+
     const renderedBookListDuplicate = books.map(book => { // map each books 
         return < ExpenseEachRepeating
             key={book.id}
@@ -25,10 +31,10 @@ export default function ItemDateHeading(props) {
         <div className="expenseEachRepeatingHeader"  >
             <div className="repeatingValue">
                 {renderDailyExpense}
-                <h1>{changeDateFormatIND}</h1>{/* reverse to dd-mm-yy format */}
+                {renderDailyIncome}
+                <h1>{changeDateFormatIND}</h1> {/* reverse to dd-mm-yy format */}
             </div>
             {renderedBookListDuplicate}
-            {/* {props.repeatingDate && props.renderDailyExpense} */}
         </div>
     )
 }

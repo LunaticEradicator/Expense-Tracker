@@ -1,7 +1,6 @@
 import ExpenseEachNew from './ExpenseListChildren/ExpenseEachNew/ExpenseEachNew'
 import useCustomBookContext from "../../hooks/use-custom-book-context"
 import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseEachRepeat/ExpenseEachRepeatingHeader'
-import DailyExpense from './ExpenseListChildren/ExpenseEachRepeat/DailyExpense'
 
 export default function BookList() {
     const { books } = useCustomBookContext()
@@ -30,25 +29,30 @@ export default function BookList() {
     }, []);
 
 
-    console.log(showDailyExpense)
-    console.log(`-----Need Fix--------`)
+    const allIncome = books.map(item => {
+        return repeatingDate.includes(item.date) ? { date: item.date, income: item.income } : { date: item.date, income: item.income }
+    })
 
+    const showDailyIncome = allIncome.reduce((accumulator, cur) => {
+        cur.income = parseInt(cur.income)
+        let repDate = cur.date;
+        let found = accumulator.find(elem => elem.date === repDate)
+        if (found) {
+            found.income += cur.income;
+        }
+        else accumulator.push(cur);
+        return accumulator;
+    }, []);
 
-    // const renderDailyExpense = showDailyExpense.map((item, index) => {
-    //     return (
-    //         <DailyExpense
-    //             key={index}
-    //             repeatingDate={repeatingDate}
-    //             {...item}
-    //         />
-    //     )
-    // })
+    console.log(showDailyIncome)
+
 
     const renderExpenseEachNew = books.map(book => { // map each books 
         return < ExpenseEachNew
             key={book.id}
             repeatingDate={repeatingDate}
-            showDailyExpense={showDailyExpense}
+            // showDailyExpense={showDailyExpense}
+            // showDailyIncome={showDailyIncome}
             {...book}
         />
     })
@@ -59,6 +63,7 @@ export default function BookList() {
             key={index}
             repeatingDate={itemDate}
             showDailyExpense={showDailyExpense}
+            showDailyIncome={showDailyIncome}
         />
     })
 
