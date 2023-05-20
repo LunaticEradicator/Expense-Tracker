@@ -1,5 +1,5 @@
 import useCustomBookContext from "../../../../hooks/use-custom-book-context"
-import ExpenseEachRepeating from './ExpenseEachRepeating'
+import ExpenseEachRepeating from './ExpenseMultiple'
 // import DailyExpense from "./DailyExpense";
 
 export default function ItemDateHeading(props) {
@@ -7,15 +7,15 @@ export default function ItemDateHeading(props) {
     const { books } = useCustomBookContext();
     const changeDateFormatIND = props.repeatingDate.split('-').reverse().join('-');
 
-    const renderDailyExpense = props.showDailyExpense.map(item => {
+    const renderDailyExpense = props.showDailyExpense.map((item, index) => {
         return (
-            props.repeatingDate === item.date && <h2 style={{ color: "red" }}>-{item.expense}</h2>
+            props.repeatingDate === item.date && <h2 key={index} style={{ color: "red" }}>-{item.expense}</h2>
         )
     })
 
-    const renderDailyIncome = props.showDailyIncome.map(item => {
+    const renderDailyIncome = props.showDailyIncome.map((item, index) => {
         return (
-            props.repeatingDate === item.date && <h2 style={{ color: "green" }}>+{item.income}</h2>
+            props.repeatingDate === item.date && <h2 key={index} style={{ color: "green" }}>+{item.income}</h2>
         )
     })
 
@@ -30,9 +30,11 @@ export default function ItemDateHeading(props) {
     return (
         <div className="expenseEachRepeatingHeader"  >
             <div className="repeatingValue">
-                {renderDailyExpense}
-                {renderDailyIncome}
-                <h1>{changeDateFormatIND}</h1> {/* reverse to dd-mm-yy format */}
+                <div className="repeatingValue-child">
+                    {renderDailyIncome}
+                    {renderDailyExpense}
+                </div>
+                <h2>{changeDateFormatIND}</h2> {/* reverse to dd-mm-yy format */}
             </div>
             {renderedBookListDuplicate}
         </div>

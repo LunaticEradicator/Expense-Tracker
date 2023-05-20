@@ -1,6 +1,6 @@
-import ExpenseEachNew from './ExpenseListChildren/ExpenseEachNew/ExpenseEachNew'
+import ExpenseEachNew from './ExpenseListChildren/ExpenseSingle/ExpenseSingle'
 import useCustomBookContext from "../../hooks/use-custom-book-context"
-import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseEachRepeat/ExpenseEachRepeatingHeader'
+import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseMultiple/ExpenseMultipleHeader'
 
 export default function BookList() {
     const { books } = useCustomBookContext()
@@ -44,21 +44,17 @@ export default function BookList() {
         return accumulator;
     }, []);
 
-    console.log(showDailyIncome)
-
+    // console.log(showDailyIncome)
 
     const renderExpenseEachNew = books.map(book => { // map each books 
         return < ExpenseEachNew
             key={book.id}
             repeatingDate={repeatingDate}
-            // showDailyExpense={showDailyExpense}
-            // showDailyIncome={showDailyIncome}
             {...book}
         />
     })
 
     const renderExpenseEachRepeatingHeader = repeatingDate.map((itemDate, index) => {
-        // console.log(itemDate)
         return <ExpenseEachRepeatingHeader
             key={index}
             repeatingDate={itemDate}
@@ -69,9 +65,14 @@ export default function BookList() {
 
     return (
         < div className="bookList" >
-            {renderExpenseEachNew}
-            {renderExpenseEachRepeatingHeader}
-            {/* {renderDailyExpense} */}
+            <div className='singleExpense'>
+                <h2>Single Expense</h2>
+                {renderExpenseEachNew}
+            </div>
+            <div className='multipleExpense'>
+                <h2>Multiple Expense</h2>
+                {renderExpenseEachRepeatingHeader}
+            </div>
         </div >
     )
 

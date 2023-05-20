@@ -3,7 +3,6 @@ import useCustomBookContext from "../../hooks/use-custom-book-context";
 export default function ExpenseDetails() {
     const { books } = useCustomBookContext();
 
-
     const totalIncome = books.reduce((acc, book) => {
         return acc + parseInt(book.income)
     }, 0)
@@ -18,13 +17,12 @@ export default function ExpenseDetails() {
 
     return (
         <div className="expenseDetails-div">
-            {/* <h1 className="expenseDetails-heading">ExpenseDetails</h1> */}
             <div className="expenseDetails-total">
-                <h2>Balance: {totalCost} </h2>
+                <h1>Balance: {totalCost} </h1>
             </div>
             <div className="expenseDetails-both">
-                <h3>Income: +{totalIncome}</h3>
-                <h3>Expense : -{totalExpense}</h3>
+                <h2>Income: +{totalIncome}</h2>
+                <h2>Expense : -{totalExpense}</h2>
             </div>
         </div>
     )

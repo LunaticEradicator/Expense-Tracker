@@ -16,9 +16,11 @@ export default function App() {
 
   return (
     <div className='app'>
-      <AddExpenseAndIncome />
-      <ExpenseDetails />
-      <ExpenseList />
+      <AddExpenseAndIncome />    {/* Add button */}
+      <div className='app-content'>
+        <ExpenseDetails />       {/* Expense Details */}
+        <ExpenseList />          {/* All Expenses */}
+      </div>
     </div>
   )
 }

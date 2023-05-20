@@ -32,8 +32,8 @@ export default function IncomeCreate(props) {
     }
 
     return (
-        <div className="incomeCreate">
-            <button onClick={() => props.handleIsIncome()} className="incomeCreate-Button">Create Income</button>
+        <div className="addItem-incomeCreate-div">
+            <button onClick={() => props.handleIsIncome()} className="addItem-incomeCreate-button">Create Income</button>
 
             {props.isIncome &&
                 <div className="createForm-div">
@@ -41,24 +41,26 @@ export default function IncomeCreate(props) {
                         <div className="createForm-title-div">
                             <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" required />
                         </div>
-                        <div className="createForm-date-div">
+                        <div className="createForm-income-div">
                             <input value={item.income} onChange={handleInput} type="number" name="income" className="createForm-expense" placeholder="Income" required />
                         </div>
-                        <div className="createForm-expense-div">
+                        <div className="createForm-date-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
-                        <select onChange={handleInput} name="categories" required>
-                            <option disabled selected value={''} >Categories</option>
-                            <option value="salary">Salary</option>
-                            <option value="awards">Awards</option>
-                            <option value="grants">Grants</option>
-                            <option value="coupon">Coupon</option>
-                            <option value="lottery">Lottery</option>
-                            <option value="refund">Refund</option>
-                            <option value="rental">Rental</option>
-                            <option value="investment">Investment</option>
-                            <option value="others">Others</option>
-                        </select>
+                        <div className="createForm-selectIncome-div" >
+                            <select onChange={handleInput} name="categories" required>
+                                <option disabled selected value={''} >Categories</option>
+                                <option value="salary">Salary</option>
+                                <option value="awards">Awards</option>
+                                <option value="grants">Grants</option>
+                                <option value="coupon">Coupon</option>
+                                <option value="lottery">Lottery</option>
+                                <option value="refund">Refund</option>
+                                <option value="rental">Rental</option>
+                                <option value="investment">Investment</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </div>
                         <div className="createForm-div-button">
                             <button className="createForm-button">Submit</button>
                         </div>

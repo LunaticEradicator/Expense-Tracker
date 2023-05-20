@@ -22,19 +22,19 @@ export default function BookEach(props) {
                 toggleEdit === false ?          // display title and buttons
                     <div>
                         <div className="bookEach-header">
-                            <h1>{changeDateFormatIND}</h1> {/* reverse to dd-mm-yy format */}
-                            {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>-{props.expense}</h1>}
-                            {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>+{props.income}</h1>}
+                            <h2>{changeDateFormatIND}</h2> {/* reverse to dd-mm-yy format */}
+                            {props.expense !== '' && props.income === 0 && <h3 style={{ color: 'red' }}>-{props.expense}</h3>}
+                            {props.income !== '' && props.expense === 0 && <h3 style={{ color: 'green' }}>+{props.income}</h3>}
                         </div>
                         <div className="bookEach-content">
                             <div className="bookEach-content-details">
                                 <img src={defaultImage} alt="Random Image" className="icon" />
-                                <h1>{capitalizeCategories}</h1> {/* reverse to dd-mm-yy format */}
-                                <h1>{props.title}</h1>
+                                <h3>{capitalizeCategories}</h3> {/* reverse to dd-mm-yy format */}
+                                <h3>{props.title}</h3>
                             </div>
                             <div>
-                                {props.expense !== '' && props.income === 0 && <h1 style={{ color: 'red' }}>-{props.expense}</h1>}
-                                {props.income !== '' && props.expense === 0 && <h1 style={{ color: 'green' }}>+{props.income}</h1>}
+                                {props.expense !== '' && props.income === 0 && <h3 style={{ color: 'red' }}>-{props.expense}</h3>}
+                                {props.income !== '' && props.expense === 0 && <h3 style={{ color: 'green' }}>+{props.income}</h3>}
                             </div>
                             <div className="bookEach-button">
                                 <button className="deleteBtn" onClick={() => removeBookById(props.id)}>Delete</button  >     {/* remove items */}

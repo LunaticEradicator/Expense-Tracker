@@ -32,8 +32,8 @@ export default function ExpenseCreate(props) {
         })
     }
     return (
-        <div className="expenseCreate">
-            <button onClick={() => props.handleIsExpense()} className="expenseCreate-Button">Create Expense</button>
+        <div className="addItem-expenseCreate-div">
+            <button onClick={() => props.handleIsExpense()} className="addItem-expenseCreate-button">Create Expense</button>
             {props.isExpense &&
 
                 <div className="createForm-div">
@@ -41,24 +41,26 @@ export default function ExpenseCreate(props) {
                         <div className="createForm-title-div">
                             <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" required />
                         </div>
-                        <div className="createForm-date-div">
+                        <div className="createForm-expense-div">
                             <input value={item.expense} onChange={handleInput} type="number" name="expense" className="createForm-expense" placeholder="Expense" required />
                         </div>
-                        <div className="createForm-expense-div">
+                        <div className="createForm-date-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
-                        <select onChange={handleInput} name="categories" required >
-                            <option value={''} disabled selected>Categories</option>
-                            <option value="food">Food</option>
-                            <option value="clothing">Clothing</option>
-                            <option value="bills">Bills</option>
-                            <option value="transportation">Transportation</option>
-                            <option value="home">Home</option>
-                            <option value="cars">Cars</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="insurance">Insurance</option>
-                            <option value="pet">Pet</option>
-                        </select>
+                        <div className="createForm-selectExpense-div" >
+                            <select onChange={handleInput} name="categories" required >
+                                <option value={''} disabled selected>Categories</option>
+                                <option value="food">Food</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="bills">Bills</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="home">Home</option>
+                                <option value="cars">Cars</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="pet">Pet</option>
+                            </select>
+                        </div>
                         <div className="createForm-div-button">
                             <button className="createForm-button">Submit</button>
                         </div>

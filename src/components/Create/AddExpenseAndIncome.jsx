@@ -8,7 +8,7 @@ export default function AddExpense() {
     const [isExpense, setIsExpense] = useState(false);
 
     function handleIsCreate() {
-        setIsSubmit(prevIsCreate => !prevIsCreate) // togg
+        setIsSubmit(prevIsCreate => !prevIsCreate) // toggle Add Button
     }
 
     function handleIsIncome() {
