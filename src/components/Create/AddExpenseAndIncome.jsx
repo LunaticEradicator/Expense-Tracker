@@ -1,6 +1,7 @@
 import { useState } from "react"
 import CreateExpense from "./CreateExpense";
 import CreateIncome from "./CreateIncome";
+import addIcon from '../../image/add.png'
 
 export default function AddExpense() {
     const [isSubmit, setIsSubmit] = useState(false);
@@ -39,7 +40,7 @@ export default function AddExpense() {
                 </>
                 :
                 <div className="addItem-button-div">
-                    <button className="addItem-button" onClick={handleIsCreate}>Add</button>
+                    <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button>
                 </div>
             }
         </div>

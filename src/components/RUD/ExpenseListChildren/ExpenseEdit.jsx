@@ -36,37 +36,41 @@ export default function BookEdit(props) {
                     <input onChange={handleInput} className="bookEdit-date" name="editDate" type="date" defaultValue={editBook.editDate} max={currentDate} />
                     {editBook.editExpense === 0 // by default we set expense and income to 0 if they are not selected
                         ?
-                        // Display income and disable expense if editExpense === [0] 
+                        // Display INCOME and disable expense if editExpense === [0] 
                         <>
                             <input onChange={handleInput} className="bookEdit-amount" name="editIncome" type="number" defaultValue={editBook.editIncome} />
                             <select onChange={handleInput} name="editCategories" defaultValue={editBook.editCategories} required>
                                 <option disabled value={''} >Categories</option>
                                 <option value="salary">Salary</option>
-                                <option value="awards">Awards</option>
                                 <option value="grants">Grants</option>
+                                <option value="awards">Awards</option>
                                 <option value="coupon">Coupon</option>
                                 <option value="lottery">Lottery</option>
                                 <option value="refund">Refund</option>
                                 <option value="rental">Rental</option>
+                                <option value="stocks">Stocks</option>
                                 <option value="investment">Investment</option>
                                 <option value="others">Others</option>
                             </select>
                         </>
                         :
-                        // Display expense and disable income if editExpense !== [0] 
+                        // Display EXPENSE and disable income if editExpense !== [0] 
                         <>
                             <input onChange={handleInput} className="bookEdit-amount" name="editExpense" type="number" defaultValue={editBook.editExpense} />
                             <select onChange={handleInput} name="editCategories" required defaultValue={editBook.editCategories}  >
                                 <option value={''} disabled >Categories</option>
-                                <option value="food">Food</option>
-                                <option value="clothing">Clothing</option>
-                                <option value="bills">Bills</option>
-                                <option value="transportation">Transportation</option>
-                                <option value="home">Home</option>
-                                <option value="cars">Cars</option>
-                                <option value="entertainment">Entertainment</option>
-                                <option value="insurance">Insurance</option>
                                 <option value="pet">Pet</option>
+                                <option value="bills">Bills</option>
+                                <option value="cars">Cars</option>
+                                <option value="food">Food</option>
+                                <option value="home">Home</option>
+                                <option value="stocks">Stocks</option>
+                                <option value="health">Health</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="transportation">Transportation</option>
+                                <option value="others">Others</option>
                             </select>
                         </>
                     }

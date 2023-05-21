@@ -77,19 +77,22 @@ input[type="date"] {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-.addItem-button-div {
-    text-align: center;
-}
+.addItem-button-div {}
 
 .addItem-button {
-    font-size: 3rem;
+    all: unset;
+    cursor: pointer;
+    /* font-size: 3rem;
     font-weight: bolder;
     background-color: black;
     color: white;
-    cursor: pointer;
     padding: 2px 30px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 10px; */
+}
+
+.addItem-button>img {
+    width: 100px;
 }
 
 .addItem-incomeCreate-div,
@@ -157,20 +160,16 @@ form>div>select {
     border-radius: 10px;
 }
 
-.expenseEachNew {
-    align-items: center;
-    margin: 20px;
-    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 10px;
-    flex-wrap: wrap;
-}
 
 .expenseEachRepeatingHeader {
     box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px;
     margin: 20px;
+}
+
+.expenseEachRepeatingHeader-date {
+    color: rgb(21, 224, 157);
 }
 
 
@@ -199,10 +198,15 @@ form>div>select {
 
 .expenseEachRepeating-deleteBtn,
 .expenseEachRepeating-editBtn {
-    /* font-size: 1.2rem; */
+    all: unset;
     margin: 2px;
     border-radius: 5px;
-    border: 1px solid black;
+}
+
+.expenseEachRepeating-editBtn>img,
+.expenseEachRepeating-deleteBtn>img {
+    width: 30px;
+    cursor: pointer;
 }
 
 .repeatingValue {
@@ -216,36 +220,49 @@ form>div>select {
     gap: 5px;
 }
 
-.bookEach-header {
+.expenseSingle {
+    align-items: center;
+    margin: 20px;
+    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.expenseSingle-header {
     display: flex;
     justify-content: space-between;
 }
 
-.bookEach-content,
-.bookEach-button {
+.expenseSingle-header-date {
+    color: rgb(21, 224, 157);
+}
+
+.expenseSingle-content,
+.expenseSingle-button-div {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-/* .bookEach-button {
-    margin: 5px;
-} */
-
-.bookEach-button>button {
-    margin: 2px;
-}
-
-.bookEach-content-details {
+.expenseSingle-content-details {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.bookEach-content-details {
-    display: flex;
-    gap: 10px;
+.expenseSingle-deleteBtn,
+.expenseSingle-editBtn {
+    all: unset;
+    cursor: pointer;
+}
+
+.expenseSingle-deleteBtn-icon,
+.expenseSingle-editBtn-icon,
+.expenseSingle-icon {
+    width: 35px;
+    height: 35px;
 }
 
 

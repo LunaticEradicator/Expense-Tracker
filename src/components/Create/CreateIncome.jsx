@@ -39,10 +39,10 @@ export default function IncomeCreate(props) {
                 <div className="createForm-div">
                     <form onSubmit={handleSubmit} className="createForm">
                         <div className="createForm-title-div">
-                            <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" required />
+                            <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" />
                         </div>
                         <div className="createForm-income-div">
-                            <input value={item.income} onChange={handleInput} type="number" name="income" className="createForm-expense" placeholder="Income" required />
+                            <input value={item.income} onChange={handleInput} type="number" name="income" className="createForm-expense" placeholder="Income*" required />
                         </div>
                         <div className="createForm-date-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
@@ -51,12 +51,13 @@ export default function IncomeCreate(props) {
                             <select onChange={handleInput} name="categories" required>
                                 <option disabled selected value={''} >Categories</option>
                                 <option value="salary">Salary</option>
-                                <option value="awards">Awards</option>
                                 <option value="grants">Grants</option>
+                                <option value="awards">Awards</option>
                                 <option value="coupon">Coupon</option>
                                 <option value="lottery">Lottery</option>
                                 <option value="refund">Refund</option>
                                 <option value="rental">Rental</option>
+                                <option value="stocks">Stocks</option>
                                 <option value="investment">Investment</option>
                                 <option value="others">Others</option>
                             </select>

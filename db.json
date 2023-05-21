@@ -1,14 +1,6 @@
 {
   "books": [
     {
-      "title": "assd",
-      "date": "2023-05-12",
-      "expense": "20",
-      "income": 0,
-      "categories": "clothing",
-      "id": 2
-    },
-    {
       "title": "New",
       "date": "2023-05-05",
       "expense": "40",
@@ -58,11 +50,27 @@
     },
     {
       "title": "sad",
-      "date": "2023-02-20",
-      "expense": 0,
-      "income": "2332",
-      "categories": "lottery",
-      "id": 15
+      "date": "2023-05-12",
+      "expense": "23",
+      "income": 0,
+      "categories": "others",
+      "id": 18
+    },
+    {
+      "title": "",
+      "date": "2023-05-12",
+      "expense": "232",
+      "income": 0,
+      "categories": "insurance",
+      "id": 19
+    },
+    {
+      "title": "",
+      "date": "2023-05-19",
+      "expense": "232",
+      "income": 0,
+      "categories": "stocks",
+      "id": 21
     }
   ]
 }
