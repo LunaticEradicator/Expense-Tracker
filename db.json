@@ -71,6 +71,22 @@
       "income": 0,
       "categories": "stocks",
       "id": 21
+    },
+    {
+      "title": "sada",
+      "date": "2023-05-14",
+      "expense": "322",
+      "income": 0,
+      "categories": "food",
+      "id": 22
+    },
+    {
+      "title": "As",
+      "date": "2023-05-03",
+      "expense": "32",
+      "income": 0,
+      "categories": "home",
+      "id": 23
     }
   ]
 }

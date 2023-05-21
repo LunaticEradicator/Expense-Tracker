@@ -3,7 +3,7 @@ import CreateExpense from "./CreateExpense";
 import CreateIncome from "./CreateIncome";
 import addIcon from '../../image/add.png'
 
-export default function AddExpense() {
+export default function AddExpense(props) {
     const [isSubmit, setIsSubmit] = useState(false);
     const [isIncome, setIsIncome] = useState(false);
     const [isExpense, setIsExpense] = useState(false);
@@ -24,23 +24,30 @@ export default function AddExpense() {
 
     return (
         <div className="addItem">
+
             {isSubmit
                 ?
-                <>
-                    <CreateIncome                               // Income Component
-                        setIsSubmit={setIsSubmit}
-                        isIncome={isIncome}
-                        handleIsIncome={handleIsIncome}
-                    />
-                    <CreateExpense                             // Expense Component
-                        setIsSubmit={setIsSubmit}
-                        isExpense={isExpense}
-                        handleIsExpense={handleIsExpense}
-                    />
-                </>
+                <div className="modal">
+                    <div className="modalOuter">
+                        <button className="modalOuter-btn" onClick={handleIsCreate}>x</button>
+                        <div className="modalContent">
+                            <CreateIncome                               // Income Component
+                                setIsSubmit={setIsSubmit}
+                                isIncome={isIncome}
+                                handleIsIncome={handleIsIncome}
+                            />
+                            <CreateExpense                             // Expense Component
+                                setIsSubmit={setIsSubmit}
+                                isExpense={isExpense}
+                                handleIsExpense={handleIsExpense}
+                            />
+                        </div>
+                    </div>
+                </div>
                 :
                 <div className="addItem-button-div">
-                    <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button>
+                    {/* <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button> */}
+                    <button className="addItem-button" onClick={handleIsCreate}>Add</button>
                 </div>
             }
         </div>

@@ -33,10 +33,10 @@ export default function ExpenseCreate(props) {
     }
     return (
         <div className="addItem-expenseCreate-div">
-            <button onClick={() => props.handleIsExpense()} className="addItem-expenseCreate-button">Create Expense</button>
+            <button onClick={() => props.handleIsExpense()} className="addItem-expenseCreate-button ">Create Expense</button>
             {props.isExpense &&
 
-                <div className="createForm-div">
+                <div className="createForm-div  ">
                     <form onSubmit={handleSubmit} className="createForm" required>
                         <div className="createForm-title-div">
                             <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" />
@@ -69,6 +69,7 @@ export default function ExpenseCreate(props) {
                         </div>
                     </form>
                 </div>
+
             }
 
         </div>

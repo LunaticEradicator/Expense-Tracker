@@ -1,9 +1,15 @@
 body {
-    /* background: rgb(170, 168, 168); */
     background-color: snow;
     box-sizing: border-box;
     padding: 0;
+    margin: 0;
     border-radius: 10px;
+
+}
+
+input,
+select {
+    font-size: 1.2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -48,17 +54,19 @@ input[type="number"] {
 input[type="date"] {
     text-align: center;
 } */
-
+/* 
 .app {
     max-width: 800px;
     margin: 0 auto;
-}
+} */
 
 .app-content {
     box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.3);
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .icon {
@@ -69,26 +77,70 @@ input[type="date"] {
 /* Add Expense and Income Section */
 
 .addItem {
+    text-align: center;
     /* display: flex;
     justify-content: center;
     gap: 20px; */
+    /* display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+}
+
+/* Modal  */
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(46, 46, 46, 0.8);
     display: grid;
     justify-items: center;
+    align-items: center;
+}
+
+.modalContent {
+    max-width: 700px;
+    height: 280px;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
+
+.modalOuter {
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: snow;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.modalOuter-btn {
+    margin: 2px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bolder;
+    background-color: black;
+    color: snow;
+    border-radius: 10px;
+    /* padding: 10px; */
+    cursor: pointer;
+}
+
+/* Modal  */
 
 .addItem-button-div {}
 
 .addItem-button {
-    all: unset;
+    /* all: unset; */
     cursor: pointer;
-    /* font-size: 3rem;
+    font-size: 3rem;
     font-weight: bolder;
     background-color: black;
     color: white;
     padding: 2px 30px;
     margin: 10px;
-    border-radius: 10px; */
+    border-radius: 10px;
 }
 
 .addItem-button>img {
@@ -124,6 +176,13 @@ input[type="date"] {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 1px 10px;
+}
+
+.createForm-button {
+    font-size: 1.2rem;
 }
 
 .editForm {
@@ -296,4 +355,25 @@ form>div>select {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.modalBackground {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
 }
