@@ -1,9 +1,23 @@
 import ExpenseEachNew from './ExpenseListChildren/ExpenseSingle/ExpenseSingle'
 import useCustomBookContext from "../../hooks/use-custom-book-context"
 import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseMultiple/ExpenseMultipleHeader'
+import { useState } from 'react'
+
+import hideIcon from '../../image/hide.png'
+import showIcon from '../../image/show.png'
 
 export default function BookList() {
-    const { books } = useCustomBookContext()
+    const { books } = useCustomBookContext();
+
+    const [minimizeSingle, setMinimizeSingle] = useState(false)
+    const [minimizeMultiple, setMinimizeMultiple] = useState(false)
+
+    function minimizeExpenseSingle() {
+        setMinimizeSingle(prevMinimizeSingle => !prevMinimizeSingle)
+    }
+    function minimizeExpenseMultiple() {
+        setMinimizeMultiple(prevMinimizeMultiple => !prevMinimizeMultiple)
+    }
 
     const allDate = books.map(item => {
         return item.date
@@ -51,6 +65,7 @@ export default function BookList() {
             key={book.id}
             repeatingDate={repeatingDate}
             {...book}
+            minimizeSingle={minimizeSingle}
         />
     })
 
@@ -60,17 +75,25 @@ export default function BookList() {
             repeatingDate={itemDate}
             showDailyExpense={showDailyExpense}
             showDailyIncome={showDailyIncome}
+            minimizeMultiple={minimizeMultiple}
         />
     })
+
 
     return (
         < div className="bookList" >
             <div className='singleExpense'>
-                <h2>Single Expense</h2>
+                <div className='singleExpense-title'>
+                    <h2 style={{ color: ' rgb(21, 224, 157)' }} >Single Expense</h2>
+                    <img onClick={minimizeExpenseSingle} className='singleExpense-title-icon' src={minimizeSingle ? showIcon : hideIcon} alt="hideIcon" />
+                </div>
                 {renderExpenseEachNew}
             </div>
             <div className='multipleExpense'>
-                <h2>Multiple Expense</h2>
+                <div className='multipleExpense-title'>
+                    <h2 style={{ color: ' rgb(21, 224, 157)' }} >Multiple Expenses</h2>
+                    <img onClick={minimizeExpenseMultiple} className='multipleExpense-title-icon' src={minimizeMultiple ? showIcon : hideIcon} alt="hideIcon" />
+                </div>
                 {renderExpenseEachRepeatingHeader}
             </div>
         </div >

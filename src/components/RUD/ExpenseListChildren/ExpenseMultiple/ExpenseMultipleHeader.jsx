@@ -32,6 +32,7 @@ export default function ItemDateHeading(props) {
     })
 
     return (
+        props.minimizeMultiple &&
         <div className="expenseEachRepeatingHeader"  >
             <div className="repeatingValue">
                 <div className="repeatingValue-child">

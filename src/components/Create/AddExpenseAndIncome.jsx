@@ -10,6 +10,9 @@ export default function AddExpense(props) {
 
     function handleIsCreate() {
         setIsSubmit(prevIsCreate => !prevIsCreate) // toggle Add Button
+        setIsExpense(false)
+        setIsIncome(false)
+
     }
 
     function handleIsIncome() {
@@ -25,8 +28,8 @@ export default function AddExpense(props) {
     return (
         <div className="addItem">
 
-            {isSubmit
-                ?
+            {
+                isSubmit &&
                 <div className="modal">
                     <div className="modalOuter">
                         <button className="modalOuter-btn" onClick={handleIsCreate}>x</button>
@@ -44,12 +47,12 @@ export default function AddExpense(props) {
                         </div>
                     </div>
                 </div>
-                :
-                <div className="addItem-button-div">
-                    {/* <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button> */}
-                    <button className="addItem-button" onClick={handleIsCreate}>Add</button>
-                </div>
             }
+            <div className="addItem-button-div">
+                <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button>
+                {/* <button className="addItem-button" onClick={handleIsCreate}>Add</button> */}
+            </div>
         </div>
+
     )
 }

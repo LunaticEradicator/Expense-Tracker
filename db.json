@@ -1,23 +1,7 @@
 {
   "books": [
     {
-      "title": "New",
-      "date": "2023-05-05",
-      "expense": "40",
-      "income": 0,
-      "categories": "clothing",
-      "id": 4
-    },
-    {
-      "title": "New Three",
-      "date": "2023-05-05",
-      "expense": "1000",
-      "income": 0,
-      "categories": "clothing",
-      "id": 6
-    },
-    {
-      "title": "Newy",
+      "title": "",
       "date": "2023-05-18",
       "expense": "2323",
       "income": 0,
@@ -25,35 +9,19 @@
       "id": 10
     },
     {
-      "title": "asdsd",
+      "title": "Uber",
       "date": "2023-05-18",
       "expense": "323",
       "income": 0,
-      "categories": "bills",
+      "categories": "transportation",
       "id": 12
     },
     {
-      "title": "Sjk",
-      "date": "2023-05-04",
-      "expense": "2323",
-      "income": 0,
-      "categories": "transportation",
-      "id": 13
-    },
-    {
-      "title": "asds",
-      "date": "2023-05-04",
-      "expense": "232",
-      "income": 0,
-      "categories": "cars",
-      "id": 14
-    },
-    {
-      "title": "sad",
+      "title": "",
       "date": "2023-05-12",
       "expense": "23",
       "income": 0,
-      "categories": "others",
+      "categories": "entertainment",
       "id": 18
     },
     {
@@ -65,28 +33,28 @@
       "id": 19
     },
     {
+      "title": "Rtx 4090",
+      "date": "2023-05-11",
+      "expense": "170000",
+      "income": 0,
+      "categories": "computer",
+      "id": 24
+    },
+    {
       "title": "",
-      "date": "2023-05-19",
-      "expense": "232",
+      "date": "2023-05-05",
+      "expense": "23",
       "income": 0,
-      "categories": "stocks",
-      "id": 21
+      "categories": "movie",
+      "id": 25
     },
     {
-      "title": "sada",
-      "date": "2023-05-14",
-      "expense": "322",
-      "income": 0,
-      "categories": "food",
-      "id": 22
-    },
-    {
-      "title": "As",
-      "date": "2023-05-03",
-      "expense": "32",
-      "income": 0,
-      "categories": "home",
-      "id": 23
+      "title": "",
+      "date": "2023-05-01",
+      "expense": 0,
+      "income": "200000",
+      "categories": "lottery",
+      "id": 26
     }
   ]
 }

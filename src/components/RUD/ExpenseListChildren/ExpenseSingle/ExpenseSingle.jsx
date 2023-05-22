@@ -11,8 +11,10 @@ import clothingIcon from '../../../../image/clothing.png'
 import billsIcon from '../../../../image/bills.png'
 import transportationIcon from '../../../../image/transportation.png'
 import homeIcon from '../../../../image/home.png'
+import movieIcon from '../../../../image/movie.png'
 import carsIcon from '../../../../image/cars.png'
 import entertainmentIcon from '../../../../image/entertainment.png'
+import computerIcon from '../../../../image/computer.png'
 import insuranceIcon from '../../../../image/insurance.png'
 import petIcon from '../../../../image/pet.png'
 import healthIcon from '../../../../image/health.png'
@@ -43,7 +45,7 @@ export default function BookEach(props) {
 
     return (
         // if duplicateDate[props.duplicate] does not contains the new books date then it is not a duplicate
-        !props.repeatingDate.includes(props.date) &&  // only create if user have entered a value && if there are no duplicates available
+        props.minimizeSingle && !props.repeatingDate.includes(props.date) &&  // only create if user have entered a value && if there are no duplicates available
         <div className="expenseSingle">
             {
                 // ---------------------------------------
@@ -61,8 +63,10 @@ export default function BookEach(props) {
                                 {props.categories === "cars" && <img src={carsIcon} alt="carsIcon" className="expenseSingle-icon" />}
                                 {props.categories === "food" && <img src={foodIcon} alt="foodIcon" className="expenseSingle-icon" />}
                                 {props.categories === "home" && <img src={homeIcon} alt="homeIcon" className="expenseSingle-icon" />}
+                                {props.categories === "movie" && <img src={movieIcon} alt="movieIcon" className="expenseSingle-icon" />}
                                 {props.categories === "health" && <img src={healthIcon} alt="healthIcon" className="expenseSingle-icon" />}
                                 {props.categories === "clothing" && <img src={clothingIcon} alt="clothingIcon" className="expenseSingle-icon" />}
+                                {props.categories === "computer" && <img src={computerIcon} alt="computerIcon" className="expenseSingle-icon" />}
                                 {props.categories === "insurance" && <img src={insuranceIcon} alt="insuranceIcon" className="expenseSingle-icon" />}
                                 {props.categories === "transportation" && <img src={transportationIcon} alt="transportationIcon" className="expenseSingle-icon" />}
                                 {props.categories === "entertainment" && <img src={entertainmentIcon} alt="entertainmentIcon" className="expenseSingle-icon" />}

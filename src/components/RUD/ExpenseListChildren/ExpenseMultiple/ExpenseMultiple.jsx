@@ -11,7 +11,9 @@ import clothingIcon from '../../../../image/clothing.png'
 import billsIcon from '../../../../image/bills.png'
 import transportationIcon from '../../../../image/transportation.png'
 import homeIcon from '../../../../image/home.png'
+import movieIcon from '../../../../image/movie.png'
 import carsIcon from '../../../../image/cars.png'
+import computerIcon from '../../../../image/computer.png'
 import entertainmentIcon from '../../../../image/entertainment.png'
 import insuranceIcon from '../../../../image/insurance.png'
 import petIcon from '../../../../image/pet.png'
@@ -54,8 +56,10 @@ export default function ExpenseEachRepeating(props) {
                             {props.categories === "cars" && <img src={carsIcon} alt="carsIcon" className="expenseSingle-icon" />}
                             {props.categories === "food" && <img src={foodIcon} alt="foodIcon" className="expenseSingle-icon" />}
                             {props.categories === "home" && <img src={homeIcon} alt="homeIcon" className="expenseSingle-icon" />}
+                            {props.categories === "movie" && <img src={movieIcon} alt="movieIcon" className="expenseSingle-icon" />}
                             {props.categories === "health" && <img src={healthIcon} alt="healthIcon" className="expenseSingle-icon" />}
                             {props.categories === "clothing" && <img src={clothingIcon} alt="clothingIcon" className="expenseSingle-icon" />}
+                            {props.categories === "computer" && <img src={computerIcon} alt="computerIcon" className="expenseSingle-icon" />}
                             {props.categories === "insurance" && <img src={insuranceIcon} alt="insuranceIcon" className="expenseSingle-icon" />}
                             {props.categories === "transportation" && <img src={transportationIcon} alt="transportationIcon" className="expenseSingle-icon" />}
                             {props.categories === "entertainment" && <img src={entertainmentIcon} alt="entertainmentIcon" className="expenseSingle-icon" />}

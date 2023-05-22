@@ -48,6 +48,7 @@ export default function ExpenseCreate(props) {
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
                         <div className="createForm-selectExpense-div" >
+                            {/* <select onFocus='this.size=10;' onBlur='this.size=0;' onChange='this.size=1; this.blur();'> */}
                             <select onChange={handleInput} name="categories" required >
                                 <option value={''} disabled selected >Categories</option>
                                 <option value="pet">Pet</option>
@@ -55,9 +56,11 @@ export default function ExpenseCreate(props) {
                                 <option value="bills">Bills</option>
                                 <option value="food">Food</option>
                                 <option value="home">Home</option>
+                                <option value="movie">Movie</option>
                                 <option value="stocks">Stocks</option>
                                 <option value="health">Health</option>
                                 <option value="clothing">Clothing</option>
+                                <option value="computer">Computer</option>
                                 <option value="insurance">Insurance</option>
                                 <option value="entertainment">Entertainment</option>
                                 <option value="transportation">Transportation</option>
