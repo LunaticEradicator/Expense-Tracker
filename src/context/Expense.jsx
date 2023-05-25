@@ -1,93 +1,75 @@
 import { useState, createContext, useCallback } from "react";
 import axios from "axios";
 
-const BookContext = createContext();
+const ExpenseContext = createContext();
 
 function Provider({ children }) {
-    const [books, setBooks] = useState([])
-    console.log(books)
+    const [expense, setExpense] = useState([])
+    console.log(expense)
 
-    books.sort((a, b) => {                      // sort books by date
+    expense.sort((a, b) => {                      // sort expense by date
         a = parseInt(a.date.split('-').join(''));
         b = parseInt(b.date.split('-').join(''));
         return b - a
     })
 
-
-    const fetchApi = useCallback(async () => { // to add new books [post] 
-        const response = await axios.get("http://localhost:8000/books")
-        setBooks(response.data)
+    const fetchApi = useCallback(async () => { // to add new expense [post] 
+        const response = await axios.get("http://localhost:8000/expense")
+        setExpense(response.data)
     }, [])
 
 
-    const createBook = async (itemTitle, itemDate, itemExpense, itemIncome, itemCategories) => {  // to create book [post]
-        const response = await axios.post("http://localhost:8000/books", {
+    const createExpense = async (itemTitle, itemDate, itemExpense, itemIncome, itemCategories) => {  // to create expense [post]
+        const response = await axios.post("http://localhost:8000/expense", {
             title: itemTitle,
             date: itemDate,
             expense: itemExpense,
             income: itemIncome,
             categories: itemCategories
         })
-        setBooks([response.data, ...books]) // response.data is the data we are storing [see db.json]
+        setExpense([response.data, ...expense]) // response.data is the data we are storing [see db.json]
         console.log(response)
         // console.log(response.date)
     }
 
-    const editBookById = async (id, editTitle, editDate, editExpense, editIncome, editCategories) => {
-        const response = await axios.put(`http://localhost:8000/books/${id}`, {
+    const editExpenseById = async (id, editTitle, editDate, editExpense, editIncome, editCategories) => {
+        const response = await axios.put(`http://localhost:8000/expense/${id}`, {
             title: editTitle,
             date: editDate,
             expense: editExpense,
             income: editIncome,
             categories: editCategories
         })
-        setBooks(prevBooks => prevBooks.map(item => {
+        setExpense(prevExpenses => prevExpenses.map(item => {
             // return item.id === id ? { ...item, title: newTitle } : item // instead of getting just one updated value [title]
             return item.id === id ? { ...item, ...response.data } : item // return every new value [response.data] // better for large scale productions
         }))
     }
 
 
-    const removeBookById = async (id) => {
-        await axios.delete(`http://localhost:8000/books/${id}`)
+    const removeExpenseById = async (id) => {
+        await axios.delete(`http://localhost:8000/expense/${id}`)
 
-        setBooks(prevBooks => prevBooks.filter(item => {
+        setExpense(prevExpenses => prevExpenses.filter(item => {
             return item.id !== id
         }))
     }
 
-
     const valueToBeUsed = {
-        books,
+        expense: expense,
         fetchApi,
-        createBook,
-        removeBookById,
-        editBookById,
+        createExpense: createExpense,
+        removeExpenseById: removeExpenseById,
+        editExpenseById: editExpenseById,
     }
 
     return (
-        <BookContext.Provider value={valueToBeUsed}>
+        <ExpenseContext.Provider value={valueToBeUsed}>
             {children}
-        </BookContext.Provider >
+        </ExpenseContext.Provider >
     )
 }
 
-export default BookContext
+export default ExpenseContext
 export { Provider }
 
-  // const createBook = (newBookName) => {
-  //   // setBook(...book,{ id: nanoid(), title: eachBookName }) same as below
-  //   setBooks([...books, { id: nanoid(), title: newBookName }]) // crud using react
-  // }
-
-// const removeBook = (id) => { // to remove the book [delete]
-//   setBooks(prevBooks => prevBooks.filter(item => {
-//     return id !== item.id
-//   }))
-// }
-
-// const editBook = (id, newTitle) => {
-//   setBooks(prevBooks => prevBooks.map(item => {
-//     return item.id === id ? { ...item, title: newTitle } : item
-//   }))
-// }

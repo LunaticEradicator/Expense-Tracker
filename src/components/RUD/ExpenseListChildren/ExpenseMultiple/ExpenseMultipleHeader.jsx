@@ -1,33 +1,34 @@
-import useCustomBookContext from "../../../../hooks/use-custom-book-context"
-import ExpenseEachRepeating from './ExpenseMultiple'
+import useCustomExpenseContext from "../../../../hooks/use-custom-expense-context"
+import ExpenseMultiple from './ExpenseMultiple'
 
 
-export default function ItemDateHeading(props) {
-    // console.log(props.showDailyExpense)
-    const { books } = useCustomBookContext();
+export default function ExpenseMultipleHeader(props) {
+    const { expense } = useCustomExpenseContext();
     const changeDateFormatIND = props.repeatingDate.split('-').reverse().join('-');
 
+    // Add expense of item if they are of the same date [daily Expense]
     const renderDailyExpense = props.showDailyExpense.map((item, index) => {
         return (
             props.repeatingDate === item.date &&
             <div key={index} className="showDailyExpense">
-                {/* <img src={expenseIcon} alt="expenseIcon" /> */}
                 <h2 style={{ color: "red", fontWeight: 'bolder' }}>	&darr;{item.expense}</h2>
             </div>
         )
     })
 
+    // Add income of item if they are of the same date [daily Income]
     const renderDailyIncome = props.showDailyIncome.map((item, index) => {
         return (
             props.repeatingDate === item.date && <h2 key={index} style={{ color: "green" }}> &uarr;{item.income}</h2>
         )
     })
 
-    const renderedBookListDuplicate = books.map(book => { // map each books 
-        return < ExpenseEachRepeating
-            key={book.id}
+    // render each expense 
+    const renderedExpenseMultiple = expense.map(expense => {
+        return < ExpenseMultiple
+            key={expense.id}
             repeatingDate={props.repeatingDate}
-            {...book}
+            {...expense}
         />
     })
 
@@ -41,7 +42,7 @@ export default function ItemDateHeading(props) {
                 </div>
                 <h2 className="expenseEachRepeatingHeader-date">{changeDateFormatIND}</h2> {/* reverse to dd-mm-yy format */}
             </div>
-            {renderedBookListDuplicate}
+            {renderedExpenseMultiple}
         </div>
     )
 }

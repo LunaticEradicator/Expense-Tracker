@@ -1,29 +1,30 @@
 import { useState } from "react";
-import useCustomBookContext from "../../../hooks/use-custom-book-context";
+import useCustomExpenseContext from "../../../hooks/use-custom-expense-context";
 import useCurrentDate from "../../../hooks/useCurrentDate";
 
-export default function BookEdit(props) {
-    const { editBookById } = useCustomBookContext();
+export default function ExpenseEdit(props) {
+    const { editExpenseById } = useCustomExpenseContext();
     const currentDate = useCurrentDate();  // custom hook to get currentDate
-    const [editBook, setEditBook] = useState({
+
+    const [editExpense, setEditExpense] = useState({
         editTitle: props.title,
         editDate: props.date,
         editExpense: props.expense,
         editIncome: props.income,
         editCategories: props.categories
     })
-    console.log(`--Edit Book--`)
-    console.log(editBook)
+    // console.log(`--Edited Expense--`)
+    // console.log(editExpense)
 
     const handleEditSubmit = (event) => {
         event.preventDefault();
-        props.toggleEditFnc() // toggle edit menu
-        editBookById(props.id, editBook.editTitle, editBook.editDate, editBook.editExpense, editBook.editIncome, editBook.editCategories) // change the edit state [called from app.jsx [editBook FNC]]
+        props.toggleEditFnc() // toggle edit menu off
+        editExpenseById(props.id, editExpense.editTitle, editExpense.editDate, editExpense.editExpense, editExpense.editIncome, editExpense.editCategories) // change the edit state [called from app.jsx [editExpense FNC]]
     }
 
     function handleInput(event) {
-        setEditBook(prevEditBook => {
-            return { ...prevEditBook, [event.target.name]: event.target.value }
+        setEditExpense(prevEditExpense => {
+            return { ...prevEditExpense, [event.target.name]: event.target.value }
         }
         )
     }
@@ -32,14 +33,15 @@ export default function BookEdit(props) {
         <div onClick={props.toggleEdit} className="expenseEdit">
             <form action="">
                 <div className="editForm">
-                    <input onChange={handleInput} className="editForm-title" name="editTitle" type="text" defaultValue={editBook.editTitle} />
-                    <input onChange={handleInput} className="editForm-date" name="editDate" type="date" defaultValue={editBook.editDate} max={currentDate} />
-                    {editBook.editExpense === 0 // by default we set expense and income to 0 if they are not selected
+                    <input onChange={handleInput} className="editForm-title" name="editTitle" type="text" defaultValue={editExpense.editTitle} autoComplete="false" />
+
+                    {editExpense.editExpense === 0 // by default we set expense and income to 0 if they are not selected
                         ?
                         // Display INCOME and disable expense if editExpense === [0] 
                         <>
-                            <input onChange={handleInput} className="editForm-amount" name="editIncome" type="number" defaultValue={editBook.editIncome} />
-                            <select onChange={handleInput} name="editCategories" defaultValue={editBook.editCategories} required>
+                            <input onChange={handleInput} className="editForm-amount" name="editIncome" type="number" defaultValue={editExpense.editIncome} autoComplete="false" />
+                            <input onChange={handleInput} className="editForm-date" name="editDate" type="date" defaultValue={editExpense.editDate} max={currentDate} />
+                            <select onChange={handleInput} name="editCategories" defaultValue={editExpense.editCategories} required>
                                 <option disabled value={''} >Categories</option>
                                 <option value="salary">Salary</option>
                                 <option value="grants">Grants</option>
@@ -56,8 +58,9 @@ export default function BookEdit(props) {
                         :
                         // Display EXPENSE and disable income if editExpense !== [0] 
                         <>
-                            <input onChange={handleInput} className="editForm-amount" name="editExpense" type="number" defaultValue={editBook.editExpense} />
-                            <select onChange={handleInput} name="editCategories" required defaultValue={editBook.editCategories}  >
+                            <input onChange={handleInput} className="editForm-amount" name="editExpense" type="number" defaultValue={editExpense.editExpense} />
+                            <input onChange={handleInput} className="editForm-date" name="editDate" type="date" defaultValue={editExpense.editDate} max={currentDate} />
+                            <select onChange={handleInput} name="editCategories" required defaultValue={editExpense.editCategories}  >
                                 <option value={''} disabled >Categories</option>
                                 <option value="pet">Pet</option>
                                 <option value="bills">Bills</option>

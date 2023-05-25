@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import ExpenseEdit from "../ExpenseEdit"
-import useCustomBookContext from "../../../../hooks/use-custom-book-context"
-import defaultImage from '../../../../image/default.png'
+import useCustomExpenseContext from "../../../../hooks/use-custom-expense-context"
 
 import editIcon from '../../../../image/edit.png'
 import deleteIcon from '../../../../image/delete.png'
 
+// Expense Icon
 import foodIcon from '../../../../image/food.png'
 import clothingIcon from '../../../../image/clothing.png'
 import billsIcon from '../../../../image/bills.png'
@@ -19,7 +19,7 @@ import insuranceIcon from '../../../../image/insurance.png'
 import petIcon from '../../../../image/pet.png'
 import healthIcon from '../../../../image/health.png'
 
-
+// Income Icon
 import salaryIcon from '../../../../image/salary.png'
 import awardsIcon from '../../../../image/awards.png'
 import grantsIcon from '../../../../image/grants.png'
@@ -32,23 +32,24 @@ import investmentIcon from '../../../../image/investment.png'
 import othersIcon from '../../../../image/others.png'
 import stocksIcon from '../../../../image/stocks.png'
 
-export default function ExpenseEachRepeating(props) {
-    const { removeBookById } = useCustomBookContext()
-    const [toggleEdit, setToggleEdit] = useState(false)
+export default function ExpenseMultiple(props) {
+    const { removeExpenseById } = useCustomExpenseContext()
+    const [toggleEditMultiple, setToggleEditMultiple] = useState(false)
     const capitalizeCategories = props.categories.charAt(0).toUpperCase() + props.categories.slice(1);
 
     function toggleEditFnc() {
-        setToggleEdit(prevToggleEdit => !prevToggleEdit)
+        setToggleEditMultiple(prevToggleEdit => !prevToggleEdit)
     }
 
     return (
-        //if duplicateDate[props.duplicate] contains the new books date then it is a duplicate
+        // if the date already exist [duplicate], add it in Multiple Expense Section   
         props.repeatingDate.includes(props.date) && // only create if user have entered a value && if duplicates are available 
         <div className="expenseEachRepeating">
             {
-                // ---------------------------------------
-                toggleEdit === false ?          // display title and buttons
+                toggleEditMultiple === false ?                                                      // display title and buttons
+
                     <div className="expenseEachRepeating-content">
+                        {/* Display Corresponding Icon for the categories */}
                         <div className="expenseEachRepeating-details">
 
                             {props.categories === "pet" && <img src={petIcon} alt="petIcon" className="expenseSingle-icon" />}
@@ -80,17 +81,18 @@ export default function ExpenseEachRepeating(props) {
 
                         </div>
 
+                        {/* Display Corresponding income or Expense According to the user selection*/}
                         {props.expense !== '' && props.income === 0 && <h3 style={{ color: 'red' }}>-{props.expense}</h3>}
                         {props.income !== '' && props.expense === 0 && <h3 style={{ color: 'green' }}>+{props.income}</h3>}
 
+                        {/* Edit and Delete Btn*/}
                         <div className="expenseEachRepeating-button-div">
                             <button onClick={toggleEditFnc} className="expenseEachRepeating-editBtn" > <img src={editIcon} alt="editIcon" /></button>
-                            <button className="expenseEachRepeating-deleteBtn" onClick={() => removeBookById(props.id)}><img src={deleteIcon} alt="deleteIcon" /></button>     {/* remove items */}
+                            <button className="expenseEachRepeating-deleteBtn" onClick={() => removeExpenseById(props.id)}><img src={deleteIcon} alt="deleteIcon" /></button>     {/* remove items */}
                         </div>
                     </div>
-                    :                           // display edit section
+                    :                                                                       // display edit section
                     <ExpenseEdit toggleEditFnc={toggleEditFnc} {...props} />
-                // ---------------------------------------
             }
         </div >
     )

@@ -1,6 +1,6 @@
 import './main.css'
 import { useEffect } from 'react';
-import useCustomBookContext from "./hooks/use-custom-book-context"
+import useCustomBookContext from "./hooks/use-custom-expense-context"
 
 import ExpenseList from './components/RUD/ExpenseList';
 import ExpenseDetails from './components/RUD/ExpenseDetails';
@@ -16,6 +16,7 @@ export default function App() {
 
   return (
     <div className='app'>
+      <h1 className='app-Title'>Expense Tracker</h1>
       <AddExpenseAndIncome />    {/* Add button */}
       <div className='app-content'>
         <ExpenseDetails />       {/* Expense Details */}

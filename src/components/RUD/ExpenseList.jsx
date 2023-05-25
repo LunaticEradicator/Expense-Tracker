@@ -1,33 +1,39 @@
-import ExpenseEachNew from './ExpenseListChildren/ExpenseSingle/ExpenseSingle'
-import useCustomBookContext from "../../hooks/use-custom-book-context"
-import ExpenseEachRepeatingHeader from './ExpenseListChildren/ExpenseMultiple/ExpenseMultipleHeader'
 import { useState } from 'react'
+
+import ExpenseSingle from './ExpenseListChildren/ExpenseSingle/ExpenseSingle'
+import useCustomExpenseContext from "../../hooks/use-custom-expense-context"
+import ExpenseMultipleHeader from './ExpenseListChildren/ExpenseMultiple/ExpenseMultipleHeader'
 
 import hideIcon from '../../image/hide.png'
 import showIcon from '../../image/show.png'
 
-export default function BookList() {
-    const { books } = useCustomBookContext();
+export default function ExpenseList() {
+    const { expense } = useCustomExpenseContext();
 
-    const [minimizeSingle, setMinimizeSingle] = useState(false)
-    const [minimizeMultiple, setMinimizeMultiple] = useState(false)
+    // minimize singleExpense and MultipleExpense
+    const [minimizeSingle, setMinimizeSingle] = useState(true)
+    const [minimizeMultiple, setMinimizeMultiple] = useState(true)
 
     function minimizeExpenseSingle() {
         setMinimizeSingle(prevMinimizeSingle => !prevMinimizeSingle)
     }
+
     function minimizeExpenseMultiple() {
         setMinimizeMultiple(prevMinimizeMultiple => !prevMinimizeMultiple)
     }
 
-    const allDate = books.map(item => {
+
+    // get Items If they have the same date 
+    const getAllDate = expense.map(item => {
         return item.date
     })
 
-    const showRepeatingDate = allDate.filter((item, index) => allDate.indexOf(item) !== index) // ---------------- shows duplicateDate from allDate
-    const repeatingDate = showRepeatingDate.filter((item, index) => showRepeatingDate.indexOf(item) === index) // remove duplicate from showRepeatingDate
+    const getRepeatingDate = getAllDate.filter((item, index) => getAllDate.indexOf(item) !== index) // ---get duplicateDate from allDate
+    const repeatingDate = getRepeatingDate.filter((item, index) => getRepeatingDate.indexOf(item) === index) // prevent showRepeatingDate from being duplicating
 
 
-    const allExpense = books.map(item => {
+    // get Items based on the same date and get it's  daily expense [for multipleExpense ]
+    const allExpense = expense.map(item => {
         return repeatingDate.includes(item.date) ? { date: item.date, expense: item.expense } : { date: item.date, expense: item.expense }
     })
 
@@ -43,7 +49,9 @@ export default function BookList() {
     }, []);
 
 
-    const allIncome = books.map(item => {
+
+    // Group Items on basis of date and get there daily income [for multipleExpense ]
+    const allIncome = expense.map(item => {
         return repeatingDate.includes(item.date) ? { date: item.date, income: item.income } : { date: item.date, income: item.income }
     })
 
@@ -58,19 +66,20 @@ export default function BookList() {
         return accumulator;
     }, []);
 
-    // console.log(showDailyIncome)
 
-    const renderExpenseEachNew = books.map(book => { // map each books 
-        return < ExpenseEachNew
-            key={book.id}
+
+    // mapping EachExpense and MultipleExpense component 
+    const renderExpenseEachNew = expense.map(expense => {
+        return < ExpenseSingle
+            key={expense.id}
             repeatingDate={repeatingDate}
-            {...book}
+            {...expense}
             minimizeSingle={minimizeSingle}
         />
     })
 
     const renderExpenseEachRepeatingHeader = repeatingDate.map((itemDate, index) => {
-        return <ExpenseEachRepeatingHeader
+        return <ExpenseMultipleHeader
             key={index}
             repeatingDate={itemDate}
             showDailyExpense={showDailyExpense}
@@ -79,23 +88,32 @@ export default function BookList() {
         />
     })
 
-
     return (
-        < div className="bookList" >
+        < div className="expenseList" >
+
             <div className='singleExpense'>
                 <div className='singleExpense-title'>
                     <h2 style={{ color: ' rgb(21, 224, 157)' }} >Single Expense</h2>
-                    <img onClick={minimizeExpenseSingle} className='singleExpense-title-icon' src={minimizeSingle ? showIcon : hideIcon} alt="hideIcon" />
+                    <div className='singleExpense-title-icon-div'>
+                        <img onClick={minimizeExpenseSingle} className='singleExpense-title-icon' src={minimizeSingle ? showIcon : hideIcon} alt="hideIcon" />
+                    </div>
                 </div>
                 {renderExpenseEachNew}
+
             </div>
-            <div className='multipleExpense'>
-                <div className='multipleExpense-title'>
-                    <h2 style={{ color: ' rgb(21, 224, 157)' }} >Multiple Expenses</h2>
-                    <img onClick={minimizeExpenseMultiple} className='multipleExpense-title-icon' src={minimizeMultiple ? showIcon : hideIcon} alt="hideIcon" />
+
+            {repeatingDate.length !== 0 && // only display multipleExpense if it's array is not empty
+                <div className='multipleExpense'>
+                    <div className='multipleExpense-title'>
+                        <h2 style={{ color: ' rgb(21, 224, 157)' }} >Multiple Expenses</h2>
+                        <div className='multipleExpense-title-icon-div'>
+                            <img onClick={minimizeExpenseMultiple} className='multipleExpense-title-icon' src={minimizeMultiple ? showIcon : hideIcon} alt="hideIcon" />
+                        </div>
+                    </div>
+                    {renderExpenseEachRepeatingHeader}
                 </div>
-                {renderExpenseEachRepeatingHeader}
-            </div>
+            }
+
         </div >
     )
 

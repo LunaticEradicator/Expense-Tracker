@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ExpenseEdit from "../ExpenseEdit"
-import useCustomBookContext from "../../../../hooks/use-custom-book-context"
+import useCustomExpenseContext from "../../../../hooks/use-custom-expense-context"
 
 import editIcon from '../../../../image/edit.png'
 import deleteIcon from '../../../../image/delete.png'
@@ -33,30 +33,34 @@ import stocksIcon from '../../../../image/stocks.png'
 
 
 
-export default function BookEach(props) {
-    const { removeBookById } = useCustomBookContext()
-    const [toggleEdit, setToggleEdit] = useState(false)
+export default function ExpenseSingle(props) {
+    const { removeExpenseById } = useCustomExpenseContext()
+    const [toggleEditSingle, setToggleEditSingle] = useState(false)
     const changeDateFormatIND = props.date.split('-').reverse().join('-');
     const capitalizeCategories = props.categories.charAt(0).toUpperCase() + props.categories.slice(1);
 
     function toggleEditFnc() {
-        setToggleEdit(prevToggleEdit => !prevToggleEdit)
+        setToggleEditSingle(prevToggleEdit => !prevToggleEdit)
     }
 
     return (
-        // if duplicateDate[props.duplicate] does not contains the new books date then it is not a duplicate
+        // if the date already exist [duplicate], add it in Single Expense Section   
         props.minimizeSingle && !props.repeatingDate.includes(props.date) &&  // only create if user have entered a value && if there are no duplicates available
         <div className="expenseSingle">
             {
                 // ---------------------------------------
-                toggleEdit === false ?          // display title and buttons
+                toggleEditSingle === false ?                                                  // edit toggle off => display singleExpense details
                     <div>
                         <div className="expenseSingle-header">
                             <h2 className="expenseSingle-header-date" >{changeDateFormatIND}</h2> {/* reverse to dd-mm-yy format */}
+
+                            {/* Display Corresponding Header */}
                             {props.expense !== '' && props.income === 0 && <h2 style={{ color: 'red', fontWeight: 'bolder' }}> &darr;{props.expense}</h2>}
                             {props.income !== '' && props.expense === 0 && <h2 style={{ color: 'green', fontWeight: 'bolder' }}> &uarr;{props.income}</h2>}
+
                         </div>
                         <div className="expenseSingle-content">
+                            {/* Display Corresponding Icon for the categories */}
                             <div className="expenseSingle-content-details">
                                 {props.categories === "pet" && <img src={petIcon} alt="petIcon" className="expenseSingle-icon" />}
                                 {props.categories === "bills" && <img src={billsIcon} alt="billsIcon" className="expenseSingle-icon" />}
@@ -86,19 +90,22 @@ export default function BookEach(props) {
                                 {props.title === '' ? <h3>{capitalizeCategories}</h3> : <h3>{props.title}</h3>}
 
                             </div>
+
+                            {/* Display Corresponding income or Expense According to the user selection*/}
                             <div>
                                 {props.expense !== '' && props.income === 0 && <h3 style={{ color: 'red', fontWeight: 'bolder' }}>-{props.expense}</h3>}
                                 {props.income !== '' && props.expense === 0 && <h3 style={{ color: 'green', fontWeight: 'bolder' }}>+{props.income}</h3>}
                             </div>
+
+                            {/* Edit and Delete Btn*/}
                             <div className="expenseSingle-button-div">
-                                {/* <button onClick={toggleEditFnc} className="editBtn" > Edit</button> */}
                                 <button onClick={toggleEditFnc} className="expenseSingle-editBtn" > <img className="expenseSingle-editBtn-icon" src={editIcon} alt=" editIcon" /></button>
-                                <button className="expenseSingle-deleteBtn" onClick={() => removeBookById(props.id)}><img className="expenseSingle-deleteBtn-icon" src={deleteIcon} alt="deleteIcon" /></button  >     {/* remove items */}
+                                <button onClick={() => removeExpenseById(props.id)} className="expenseSingle-deleteBtn"><img className="expenseSingle-deleteBtn-icon" src={deleteIcon} alt="deleteIcon" /></button  >     {/* remove items */}
                             </div>
                         </div>
 
                     </div>
-                    :                           // display edit section
+                    :                                                                    // edit toggle on
                     <ExpenseEdit toggleEditFnc={toggleEditFnc} {...props} />
                 // ---------------------------------------
             }

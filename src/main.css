@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Reem+Kufi+Fun&display=swap');
+
 :root {
     --button-background: #1d1d1d;
+    --transition-time: 0.5s;
 }
 
+button {
+    outline: 1px solid snow;
+}
+
+
+
 body {
-    background-color: snow;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Reem Kufi Fun', sans-serif;
+    background-color: #c0c0c038;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -22,9 +33,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.app {
-    position: relative;
-}
 
 h1 {
     font-size: 2.5rem;
@@ -55,21 +63,33 @@ select {
 }
 
 
-option {
-    color: rgb(21, 224, 157);
+
+/* select.categories option:hover {
+    box-shadow: 0 0 10px 100px #1882A8 inset;
+} */
+
+.app {
+    position: relative;
 }
 
-select.categories option:hover {
-    box-shadow: 0 0 10px 100px #1882A8 inset;
+.app-Title {
+    text-align: center;
+    color: rgb(21, 224, 157);
+    font-size: 3rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .app-content {
+    background-color: snow;
     box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.3);
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .icon {
@@ -86,6 +106,8 @@ select.categories option:hover {
     display: grid;
     justify-items: center;
     align-items: center;
+    /* transition: var(--transition-time); */
+
 }
 
 .modalOuter {
@@ -99,9 +121,12 @@ select.categories option:hover {
     align-items: flex-end;
 }
 
+
+
 .modalContent {
+    padding-bottom: 10px;
     max-width: 600px;
-    height: 290px;
+    max-height: 290px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 
@@ -113,35 +138,39 @@ select.categories option:hover {
     font-size: 2rem;
     font-weight: bolder;
     background-color: var(--button-background);
-    color: rgb(21, 224, 157);
+    color: #15e09d;
     border-radius: 10px;
     cursor: pointer;
+    transition: var(--transition-time);
 }
 
 /* Modal  */
 
 /* Add Expense and Income Section */
+
 .addItem {
     text-align: center;
-    /* position: sticky;
-    top: 80%; */
+    position: sticky;
+    top: 92%;
+    margin: auto;
+    /* width is inline dynamically changed in AddExpense and Income section */
 }
 
 .addItem-button {
     all: unset;
     cursor: pointer;
-    font-size: 3rem;
-    font-weight: bolder;
     background-color: var(--button-background);
-    color: rgb(21, 224, 157);
-    /* padding: 2px 30px; */
-    padding: 10px;
-    margin: 10px;
+    padding: 2px;
     border-radius: 50%;
+    transition: var(--transition-time);
 }
 
+/* .addItem-button:active {
+    pointer-events: none;
+} */
+
 .addItem-button>img {
-    width: 100px;
+    width: 50px;
 }
 
 .addItem-incomeCreate-div,
@@ -151,18 +180,25 @@ select.categories option:hover {
 
 .addItem-incomeCreate-button,
 .addItem-expenseCreate-button {
-    width: 90%;
-    margin: auto;
+    min-width: 90%;
+    max-width: 100%;
+    margin: auto 10px;
     display: flex;
     justify-content: center;
     flex: 1;
-    font-size: 2rem;
+    font-size: calc(0.75em + 1vmin);
     font-weight: bolder;
     background-color: var(--button-background);
     color: rgb(21, 224, 157);
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
+    transition: var(--transition-time);
+}
+
+.addItem-incomeCreate-button:hover,
+.addItem-expenseCreate-button:hover {
+    transform: scale(0.9);
 }
 
 /* Add Expense and Income Section */
@@ -183,8 +219,10 @@ select.categories option:hover {
     background-color: var(--button-background);
     color: rgb(21, 224, 157);
     border-radius: 10px;
-    /* padding: 5px; */
+    transition: var(--transition-time);
+    cursor: pointer;
 }
+
 
 form>div {
     display: flex;
@@ -199,7 +237,7 @@ form>div>select {
 
 /* Add Expense and Income Section Form */
 
-.bookList {
+.expenseList {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -211,6 +249,7 @@ form>div>select {
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
+    /* transition: 1s; */
 }
 
 /* minimize expenses  */
@@ -226,7 +265,12 @@ form>div>select {
     width: 35px;
     height: 35px;
     cursor: pointer;
+    transition: var(--transition-time);
+    background-color: black;
+    border-radius: 50%;
 }
+
+
 
 /* minimize expenses  */
 
@@ -296,6 +340,7 @@ form>div>select {
     border-radius: 10px;
     padding: 10px;
     flex-wrap: wrap;
+    /* transition: 1s; */
 }
 
 
@@ -365,6 +410,12 @@ form>div>select {
 
 .expenseDetails-div {
     text-align: center;
+    border-radius: 10px;
+    color: var(--button-background);
+    max-width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 0px 3px 7.5px rgba(0, 0, 0, 0.3);
 }
 
 .expenseDetails-both {
@@ -373,23 +424,33 @@ form>div>select {
     gap: 20px;
 }
 
-/* .modalBackground {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(200, 200, 200);
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+select:focus,
+input:focus {
+    outline: rgb(255, 255, 255);
+    background-color: #15e09d;
 }
 
-.modalContainer {
-    width: 500px;
-    height: 500px;
-    border-radius: 12px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-} */
+.hoverEffect {
+    transition: var(--transition-time);
+}
+
+.hoverEffect:hover {
+    transform: scale(1.2);
+}
+
+.modalOuter-btn:hover {
+    transform: scale(0.8);
+}
+
+.createForm-button:hover {
+    transform: scale(0.9);
+}
+
+.singleExpense-title-icon:hover,
+.multipleExpense-title-icon:hover {
+    transform: scale(1.2);
+}
+
+div:focus {
+    background-color: red;
+}

@@ -1,9 +1,9 @@
 import { useState } from "react"
-import useCustomBookContext from "../../hooks/use-custom-book-context"
+import useCustomExpenseContext from "../../hooks/use-custom-expense-context"
 import useCurrentDate from "../../hooks/useCurrentDate"
 
 export default function ExpenseCreate(props) {
-    const { createBook } = useCustomBookContext()
+    const { createExpense } = useCustomExpenseContext()
     const currentDate = useCurrentDate(); // custom hook to get currentDate
 
     const [item, setItem] = useState({
@@ -14,23 +14,19 @@ export default function ExpenseCreate(props) {
     }) // to have an controlled input
 
 
-    const handleSubmit = (event) => { // to submit new book
+    const handleSubmit = (event) => { // to submit new expense
         event.preventDefault()
-        //createBook Fnc
-        createBook(item.title, item.date, item.expense, 0, item.categories) // 0 === income [add sum without showing Nan]
-        // erase eachBookName after submit
-        setItem(prevItem => {
-            return { title: '', date: '', expense: '', categories: '' }
-        })
-        // toggle off Create Children []
+        createExpense(item.title, item.date, item.expense, 0, item.categories) // 0 === income [add sum without showing Nan]
+        setItem({ title: '', date: '', expense: '', categories: '' })     // erase eachExpense after submit
         props.setIsSubmit(false)
     }
 
-    const handleInput = (event) => { // to get userInput of the books title
+    const handleInput = (event) => { // to get userInput 
         setItem(prevItem => {
             return { ...prevItem, [event.target.name]: event.target.value }
         })
     }
+
     return (
         <div className="addItem-expenseCreate-div">
             <button onClick={() => props.handleIsExpense()} className="addItem-expenseCreate-button ">Create Expense</button>
@@ -39,16 +35,15 @@ export default function ExpenseCreate(props) {
                 <div className="createForm-div  ">
                     <form onSubmit={handleSubmit} className="createForm" required>
                         <div className="createForm-title-div">
-                            <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" />
+                            <input value={item.title} onChange={handleInput} type="text" name="title" className="createForm-title" placeholder="Title" autoComplete="false" />
                         </div>
                         <div className="createForm-expense-div">
-                            <input value={item.expense} onChange={handleInput} type="number" name="expense" className="createForm-expense" placeholder="Expense*" required />
+                            <input value={item.expense} onChange={handleInput} type="number" name="expense" className="createForm-expense" placeholder="Amount *" required autoComplete="false" />
                         </div>
                         <div className="createForm-date-div">
                             <input value={item.date} onChange={handleInput} type="date" name="date" className="createForm-date" placeholder="Date" required max={currentDate} />
                         </div>
-                        <div className="createForm-selectExpense-div" >
-                            {/* <select onFocus='this.size=10;' onBlur='this.size=0;' onChange='this.size=1; this.blur();'> */}
+                        <div className="createForm-expenseCategories-div" >
                             <select onChange={handleInput} name="categories" required >
                                 <option value={''} disabled selected >Categories</option>
                                 <option value="pet">Pet</option>

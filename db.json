@@ -1,60 +1,52 @@
 {
-  "books": [
+  "expense": [
     {
       "title": "",
-      "date": "2023-05-18",
-      "expense": "2323",
+      "date": "2023-05-25",
+      "expense": "3210",
       "income": 0,
-      "categories": "bills",
-      "id": 10
+      "categories": "health",
+      "id": 1
     },
     {
-      "title": "Uber",
-      "date": "2023-05-18",
-      "expense": "323",
-      "income": 0,
-      "categories": "transportation",
-      "id": 12
-    },
-    {
-      "title": "",
-      "date": "2023-05-12",
-      "expense": "23",
+      "title": "Park",
+      "date": "2023-05-25",
+      "expense": "2210",
       "income": 0,
       "categories": "entertainment",
-      "id": 18
+      "id": 2
     },
     {
       "title": "",
-      "date": "2023-05-12",
-      "expense": "232",
-      "income": 0,
-      "categories": "insurance",
-      "id": 19
+      "date": "2023-05-25",
+      "expense": 0,
+      "income": "9732",
+      "categories": "stocks",
+      "id": 3
     },
     {
-      "title": "Rtx 4090",
-      "date": "2023-05-11",
-      "expense": "170000",
+      "title": "",
+      "date": "2023-05-03",
+      "expense": 0,
+      "income": "570000",
+      "categories": "lottery",
+      "id": 4
+    },
+    {
+      "title": "H&M Shopping",
+      "date": "2023-05-07",
+      "expense": "5000",
+      "income": 0,
+      "categories": "clothing",
+      "id": 5
+    },
+    {
+      "title": "Rtx 4090 ITX Build",
+      "date": "2023-05-21",
+      "expense": "300000",
       "income": 0,
       "categories": "computer",
-      "id": 24
-    },
-    {
-      "title": "",
-      "date": "2023-05-05",
-      "expense": "23",
-      "income": 0,
-      "categories": "movie",
-      "id": 25
-    },
-    {
-      "title": "",
-      "date": "2023-05-01",
-      "expense": 0,
-      "income": "200000",
-      "categories": "lottery",
-      "id": 26
+      "id": 7
     }
   ]
 }
