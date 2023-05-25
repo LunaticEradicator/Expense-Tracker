@@ -58,7 +58,7 @@ export default function ExpenseEdit(props) {
                         :
                         // Display EXPENSE and disable income if editExpense !== [0] 
                         <>
-                            <input onChange={handleInput} className="editForm-amount" name="editExpense" type="number" defaultValue={editExpense.editExpense} />
+                            <input onChange={handleInput} className="editForm-amount" name="editExpense" type="number" defaultValue={editExpense.editExpense} autoComplete="false" />
                             <input onChange={handleInput} className="editForm-date" name="editDate" type="date" defaultValue={editExpense.editDate} max={currentDate} />
                             <select onChange={handleInput} name="editCategories" required defaultValue={editExpense.editCategories}  >
                                 <option value={''} disabled >Categories</option>

@@ -75,7 +75,8 @@ select {
 .app-Title {
     text-align: center;
     color: rgb(21, 224, 157);
-    font-size: 3rem;
+    /* font-size: 3rem; */
+    font-size: 2rem;
     position: absolute;
     left: 0;
     right: 0;
