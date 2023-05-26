@@ -1,12 +1,13 @@
 import { useState, createContext } from "react";
+import { nanoid } from "nanoid";
 // import { useCallback } from "react";
 // import axios from "axios";
 
 const ExpenseContext = createContext();
 
 function Provider({ children }) {
-    // const [expense, setExpense] = useState(JSON.parse(localStorage.getItem("allExpenses")) || [])
     const [expense, setExpense] = useState(JSON.parse(localStorage.getItem("allExpenses")) || [])
+    console.log(expense)
 
     expense.sort((a, b) => {                      // sort expense by date
         a = parseInt(a.date.split('-').join(''));
@@ -14,14 +15,14 @@ function Provider({ children }) {
         return b - a
     })
 
-    const fetchApi = () => {
+    const fetchData = () => {
         localStorage.setItem("allExpenses", JSON.stringify(expense))
     }
 
     const createExpense = (itemTitle, itemDate, itemExpense, itemIncome, itemCategories) => {
         setExpense([...expense,
         {
-            id: expense.length + 1,
+            id: nanoid(),
             title: itemTitle,
             date: itemDate,
             expense: itemExpense,
@@ -46,7 +47,7 @@ function Provider({ children }) {
     }
 
     const valueToBeUsed = {
-        fetchApi,
+        fetchData,
         expense: expense,
         createExpense: createExpense,
         removeExpenseById: removeExpenseById,

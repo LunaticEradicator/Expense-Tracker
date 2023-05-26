@@ -28,29 +28,26 @@ export default function AddExpense() {
 
     return (
         <>
-            {/* <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button> */}
-            <div style={addItemStickyPosition} className="addItem">
-
-                {
-                    isSubmit &&
-                    <div className="modal">
-                        <div className="modalOuter">
-                            <button className="modalOuter-btn" onClick={handleIsCreate}>x</button>
-                            <div className="modalContent">
-                                <CreateIncome                               // Income Component
-                                    setIsSubmit={setIsSubmit}
-                                    isIncome={isIncome}
-                                    handleIsIncome={handleIsIncome}
-                                />
-                                <CreateExpense                             // Expense Component
-                                    setIsSubmit={setIsSubmit}
-                                    isExpense={isExpense}
-                                    handleIsExpense={handleIsExpense}
-                                />
-                            </div>
+            {isSubmit &&
+                <div className="modal">
+                    <div className="modalOuter">
+                        <button className="modalOuter-btn" onClick={handleIsCreate}>x</button>
+                        <div className="modalContent">
+                            <CreateIncome                               // Income Component
+                                setIsSubmit={setIsSubmit}
+                                isIncome={isIncome}
+                                handleIsIncome={handleIsIncome}
+                            />
+                            <CreateExpense                             // Expense Component
+                                setIsSubmit={setIsSubmit}
+                                isExpense={isExpense}
+                                handleIsExpense={handleIsExpense}
+                            />
                         </div>
                     </div>
-                }
+                </div>
+            }
+            <div style={addItemStickyPosition} className="addItem">
                 <div className={isSubmit ? "addItem-button-div" : "addItem-button-div hoverEffect"}>
                     <button className="addItem-button" onClick={handleIsCreate}><img src={addIcon} alt="addIcon" /></button>
                 </div>

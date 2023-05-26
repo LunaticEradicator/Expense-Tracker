@@ -12,9 +12,7 @@ export default function ExpenseEdit(props) {
         editExpense: props.expense,
         editIncome: props.income,
         editCategories: props.categories
-    })
-    // console.log(`--Edited Expense--`)
-    // console.log(editExpense)
+    }) // for assigning the current value to edit Input
 
     const handleEditSubmit = (event) => {
         event.preventDefault();

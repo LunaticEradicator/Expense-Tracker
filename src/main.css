@@ -100,29 +100,30 @@ select {
 
 /* Modal  */
 .modal {
-    width: 100vw;
-    height: 100vh;
     position: fixed;
-    background-color: rgba(46, 46, 46, 0.8);
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    /* transition: var(--transition-time); */
-
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
 }
 
 .modalOuter {
     margin: 10px;
     box-shadow: rgba(0, 0, 0, 0.541) 0px 5px 15px;
-    /* background-color: rgb(240, 240, 240); */
     background-color: rgba(255, 255, 255, 0.027);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    /* Align To Center */
+    position: fixed;
     align-items: flex-end;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
-
-
 
 .modalContent {
     padding-bottom: 10px;
@@ -136,7 +137,7 @@ select {
 .modalOuter-btn {
     margin: 2px;
     margin-bottom: 10px;
-    font-size: 2rem;
+    font-size: calc(0.75em + 1vmin);
     font-weight: bolder;
     background-color: var(--button-background);
     color: #15e09d;
@@ -152,8 +153,9 @@ select {
 .addItem {
     text-align: center;
     position: sticky;
-    top: 92%;
+    top: 89%;
     margin: auto;
+    transition: var(--transition-time);
     /* width is inline dynamically changed in AddExpense and Income section */
 }
 
