@@ -1,4 +1,6 @@
 This is an Expense Tracker.
-Json server is used to store data.
+Json server was used for sending fake rest.
 Context Api and Custom Hook are used.
-Progess Bar is dynamically with respect to balance amount.
+localStorage is used to store data.
+Is Mobile Responsive.
+Progress Bar is dynamically with respect to balance amount.
